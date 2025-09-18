@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez tous nos produits PlayStation - consoles PS2, PS3, PS4, PS5 et jeux vidéo.">
+    <title>Produits - Cardy-Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Cardy-Store Logo" class="logo-img">
+                    <span class="logo-text">CARDY-STORE</span>
+                </a>
+            </div>
+            
+            <nav class="nav">
+                <button class="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="produits.html" class="active">Produits</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-toggle" aria-label="Toggle search">
+                    <span>🔍</span>
+                </button>
+                <a href="#" class="cart-icon" id="cartButton">
+                    <span>🛒</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Rechercher un produit...">
+                <button class="search-close">×</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Page Content -->
+    <main class="products-page">
+        <div class="container">
+            <h1>Nos Produits</h1>
+            
+            <div class="filter-section">
+                <label for="productFilter">Filtrer par:</label>
+                <select id="productFilter">
+                    <option value="all">Tous les produits</option>
+                    <option value="ps5">PS5</option>
+                    <option value="ps4">PS4</option>
+                    <option value="ps3">PS3</option>
+                    <option value="ps2">PS2</option>
+                    <option value="games">Jeux</option>
+                    <option value="accessories">Accessoires</option>
+                </select>
+            </div>
+            
+            <div class="products-grid detailed">
+                <div class="product-card" data-category="ps5">
+                    <img src="images/ps5.jpg" alt="Console PS5" loading="lazy">
+                    <h3>PS5 Console</h3>
+                    <p class="product-description">Console PlayStation 5 avec manette DualSense et câbles inclus</p>
+                    <p class="product-price">350.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS5 Console" data-price="350000">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-card" data-category="ps4">
+                    <img src="images/ps4.jpg" alt="Console PS4" loading="lazy">
+                    <h3>PS4 Pro</h3>
+                    <p class="product-description">Console PlayStation 4 Pro 1TB avec manette DualShock 4</p>
+                    <p class="product-price">180.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS4 Pro" data-price="180000">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-card" data-category="ps4">
+                    <img src="images/ps4-slim.jpg" alt="Console PS4 Slim" loading="lazy">
+                    <h3>PS4 Slim</h3>
+                    <p class="product-description">Console PlayStation 4 Slim 500GB avec manette DualShock 4</p>
+                    <p class="product-price">150.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS4 Slim" data-price="150000">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-card" data-category="ps3">
+                    <img src="images/ps3.jpg" alt="Console PS3" loading="lazy">
+                    <h3>PS3 Super Slim</h3>
+                    <p class="product-description">Console PlayStation 3 Super Slim 500GB avec manette DualShock 3</p>
+                    <p class="product-price">80.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS3 Super Slim" data-price="80000">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-card" data-category="ps2">
+                    <img src="images/ps2.jpg" alt="Console PS2" loading="lazy">
+                    <h3>PS2 Slim</h3>
+                    <p class="product-description">Console PlayStation 2 Slim avec manette et câbles</p>
+                    <p class="product-price">50.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS2 Slim" data-price="50000">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-card" data-category="games">
+                    <img src="images/game1.jpg" alt="Jeu FIFA 23" loading="lazy">
+                    <h3>FIFA 23 - PS5</h3>
+                    <p class="product-description">Jeu FIFA 23 version complète pour PlayStation 5</p>
+                    <p class="product-price">25.000 FCFA</p>
+                    <button class="add-to-cart" data-product="FIFA 23 - PS5" data-price="25000">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-card" data-category="games">
+                    <img src="images/game2.jpg" alt="Jeu Call of Duty" loading="lazy">
+                    <h3>Call of Duty: MWII - PS5</h3>
+                    <p class="product-description">Jeu Call of Duty: Modern Warfare II pour PlayStation 5</p>
+                    <p class="product-price">28.000 FCFA</p>
+                    <button class="add-to-cart" data-product="Call of Duty: MWII - PS5" data-price="28000">Ajouter au panier</button>
+                </div>
+                
+                <div class="product-card" data-category="accessories">
+                    <img src="images/controller.jpg" alt="Manette DualSense" loading="lazy">
+                    <h3>Manette DualSense</h3>
+                    <p class="product-description">Manette sans fil DualSense pour PlayStation 5</p>
+                    <p class="product-price">45.000 FCFA</p>
+                    <button class="add-to-cart" data-product="Manette DualSense" data-price="45000">Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
+            <div class="footer-links">
+                <a href="#">Politique de Confidentialité</a>
+                <a href="#">Conditions d'Utilisation</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://wa.me/2290166364730" aria-label="WhatsApp">📱</a>
+                <a href="#" aria-label="Facebook">📘</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Votre Panier</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <p>Total: <span id="cartTotal">0</span> FCFA</p>
+            </div>
+            <button id="checkoutButton" class="cta-button">Payer via WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

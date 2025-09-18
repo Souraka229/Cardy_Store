@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cardy-Store - Achetez PS2, PS3, PS4, PS5 à Cotonou. Vente de consoles PlayStation, jeux vidéo et services de réparation.">
+    <title>Cardy-Store - Vente PS Bénin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Cardy-Store Logo" class="logo-img">
+                    <span class="logo-text">CARDY-STORE</span>
+                </a>
+            </div>
+            
+            <nav class="nav">
+                <button class="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-toggle" aria-label="Toggle search">
+                    <span>🔍</span>
+                </button>
+                <a href="#" class="cart-icon" id="cartButton">
+                    <span>🛒</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Rechercher un produit...">
+                <button class="search-close">×</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay">
+            <div class="container">
+                <h1>VENTE DE PLAYSTATION - CARDY-STORE</h1>
+                <h2>Consoles PS2, PS3, PS4, PS5 - Copie et Réparation</h2>
+                <a href="#promotions" class="cta-button">Découvrir Nos Offres</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section id="promotions" class="promotions">
+        <div class="container">
+            <h2>Nos Offres Spéciales</h2>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <h3>3 Jeux</h3>
+                    <p class="promo-price">38.000 FCFA</p>
+                </div>
+                <div class="promo-card">
+                    <h3>6 Jeux</h3>
+                    <p class="promo-price">65.000 FCFA</p>
+                </div>
+                <div class="promo-card">
+                    <h3>10 Jeux</h3>
+                    <p class="promo-price">85.000 FCFA</p>
+                </div>
+            </div>
+            
+            <div class="promo-details">
+                <ul>
+                    <li>PS4 version 11.50 à 12 et PS5 toutes versions</li>
+                    <li>Copie de PS4 version 9.00- 11.00 possible</li>
+                    <li>Copie de jeu PS3 à partir de 1.500 FCFA l'unité</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <p>Copie et Installation des Meilleurs Jeux</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <p>Ventes de Manettes de PS3 à PS5</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <p>Réparation des Consoles de PS3 à PS5</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📡</div>
+                    <p>WiFi Zone</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎪</div>
+                    <p>Salle de Jeux</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <p>Vente de Consoles PS2 à PS5</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2>Nos Produits</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="images/ps5.jpg" alt="Console PS5" loading="lazy">
+                    <h3>PS5 Console</h3>
+                    <p class="product-price">350.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS5 Console" data-price="350000">Acheter</button>
+                </div>
+                <div class="product-card">
+                    <img src="images/ps4.jpg" alt="Console PS4" loading="lazy">
+                    <h3>PS4 Console</h3>
+                    <p class="product-price">150.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS4 Console" data-price="150000">Acheter</button>
+                </div>
+                <div class="product-card">
+                    <img src="images/ps3.jpg" alt="Console PS3" loading="lazy">
+                    <h3>PS3 Console</h3>
+                    <p class="product-price">80.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS3 Console" data-price="80000">Acheter</button>
+                </div>
+                <div class="product-card">
+                    <img src="images/ps2.jpg" alt="Console PS2" loading="lazy">
+                    <h3>PS2 Console</h3>
+                    <p class="product-price">50.000 FCFA</p>
+                    <button class="add-to-cart" data-product="PS2 Console" data-price="50000">Acheter</button>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="produits.html" class="cta-button">Voir tous les produits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Nous Contacter</h2>
+            <div class="contact-info">
+                <p>📍 Situés à Menontin, Église Catholique, en face de l'immeuble blanc (au bord du pavé)</p>
+                <p>📞 +229 01 66 36 47 30</p>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.017509299716!2d2.389025274831502!3d6.370344093588956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023555b41e1724d%3A0x6c35b3c1c1c1c1c1!2sMenontin%2C%20Cotonou%2C%20Benin!5e0!3m2!1sen!2s!4v1642345678901!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="contact-button">
+                <a href="contact.html" class="cta-button">Envoyer un message</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
+            <div class="footer-links">
+                <a href="#">Politique de Confidentialité</a>
+                <a href="#">Conditions d'Utilisation</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://wa.me/2290166364730" aria-label="WhatsApp">📱</a>
+                <a href="#" aria-label="Facebook">📘</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Votre Panier</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <p>Total: <span id="cartTotal">0</span> FCFA</p>
+            </div>
+            <button id="checkoutButton" class="cta-button">Payer via WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
