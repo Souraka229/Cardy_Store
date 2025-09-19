@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Styles pour la page de détails */
+        /* Styles existants */
         .product-details {
             max-width: 800px;
             margin: 20px auto;
@@ -44,7 +45,6 @@
         .product-details .add-to-cart:hover {
             background-color: #218838;
         }
-        /* Styles pour le carrousel */
         .carousel {
             position: relative;
             max-width: 600px;
@@ -75,6 +75,43 @@
         }
         .carousel-button.next {
             right: 10px;
+        }
+        /* Nouveaux styles pour product-info */
+        .product-info {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .product-info h4 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .info-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            background-color: #fff;
+        }
+        .info-block h5 {
+            font-size: 18px;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        .info-block h5 i {
+            margin-right: 8px;
+        }
+        .info-block p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #555;
+        }
+        .info-block p strong {
+            color: #333;
         }
     </style>
 </head>
@@ -132,6 +169,42 @@
             <p class="product-description">Console PlayStation 4 Fat avec disque dur 500Go et jeux préinstallés</p>
             <p class="product-price">165.000 FCFA</p>
             <p class="product-note">Tous les accessoires inclus</p>
+            <section class="product-info">
+                <h4>Informations sur le produit</h4>
+                <div class="info-block">
+                    <h5><i class="fas fa-shield-alt"></i> État et Authenticité</h5>
+                    <p><strong>État :</strong> Occasion, excellent état, testé et fonctionnel.</p>
+                    <p><strong>Authenticité :</strong> Produit original Sony, garanti 100% authentique.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-box-open"></i> Accessoires inclus</h5>
+                    <p>1 manette DualShock 4, câble HDMI, câble d'alimentation, câble USB, boîte d'origine.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-hdd"></i> Capacité de stockage</h5>
+                    <p>Disque dur de 500Go.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-money-bill-wave"></i> Prix et Paiement</h5>
+                    <p><strong>Prix de vente :</strong> 165.000 FCFA</p>
+                    <p><strong>Options de paiement :</strong> Espèces, Mobile Money (Moov, MTN, Celtiis), virement bancaire.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-star"></i> Offres spéciales</h5>
+                    <p>Inclut 10 à 15 jeux préinstallés. Réduction de 10.000 FCFA pour l'achat d'une deuxième manette DualShock 4.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-truck"></i> Modalités de livraison</h5>
+                    <p><strong>Lieu :</strong> En main propre à Cotonou ou livraison à domicile partout au Bénin.</p>
+                    <p><strong>Frais :</strong> Gratuit à Cotonou, 5.000-10.000 FCFA ailleurs.</p>
+                    <p><strong>Délais :</strong> Immédiat en main propre, 1-3 jours pour livraison.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-shield-alt"></i> Garantie et Sécurité</h5>
+                    <p><strong>Garantie :</strong> 6 mois sur les défauts matériels.</p>
+                    <p><strong>Politique de retour :</strong> Échange possible sous 48h si problème technique.</p>
+                </div>
+            </section>
             <button class="add-to-cart" data-product="PS4 FAT +10-15 JEUX" data-price="165000">Ajouter au panier</button>
         </div>
     </main>
