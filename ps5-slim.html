@@ -9,74 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Styles pour la page de détails */
-        .product-details {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            text-align: center;
-        }
-        .product-details h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .product-details .product-offer,
-        .product-details .product-description,
-        .product-details .product-price,
-        .product-details .product-note {
-            margin: 10px 0;
-        }
-        .product-details .product-price {
-            font-size: 24px;
-            font-weight: 500;
-            color: #333;
-        }
-        .product-details .add-to-cart {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        .product-details .add-to-cart:hover {
-            background-color: #218838;
-        }
-        /* Styles pour le carrousel */
-        .carousel {
-            position: relative;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .carousel img {
-            width: 100%;
-            height: auto;
-            display: none;
-            border-radius: 8px;
-        }
-        .carousel img.active {
-            display: block;
-        }
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        .carousel-button.prev {
-            left: 10px;
-        }
-        .carousel-button.next {
-            right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
@@ -120,6 +53,7 @@
     <!-- Product Details -->
     <main class="product-details">
         <div class="container">
+            <a href="produits.html" class="back-button">Retour aux produits</a>
             <h3>PS5 SLIM SCELLÉE</h3>
             <div class="carousel">
                 <img src="images/ps5-slim-2.jpg" alt="PS5 Slim Scellée - Vue 1">
@@ -132,6 +66,42 @@
             <p class="product-description">Console PlayStation 5 Slim neuve et scellée avec garantie</p>
             <p class="product-price">460.000 FCFA</p>
             <p class="product-note">375.000 FCFA sans les jeux</p>
+            <section class="product-info">
+                <h4>Informations sur le produit</h4>
+                <div class="info-block">
+                    <h5><i class="fas fa-shield-alt"></i> État et Authenticité</h5>
+                    <p><strong>État :</strong> Neuf, scellé.</p>
+                    <p><strong>Authenticité :</strong> Produit original Sony, garanti 100% authentique.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-box-open"></i> Accessoires inclus</h5>
+                    <p>1 manette DualSense, câble HDMI, câble d'alimentation, câble USB-C, boîte d'origine.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-hdd"></i> Capacité de stockage</h5>
+                    <p>Disque dur de 1To.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-money-bill-wave"></i> Prix et Paiement</h5>
+                    <p><strong>Prix de vente :</strong> 460.000 FCFA</p>
+                    <p><strong>Options de paiement :</strong> Espèces, Mobile Money (Moov, MTN, Celtiis), virement bancaire.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-star"></i> Offres spéciales</h5>
+                    <p>Inclut 10 jeux au choix. Réduction de 15.000 FCFA pour l'achat d'une deuxième manette DualSense.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-truck"></i> Modalités de livraison</h5>
+                    <p><strong>Lieu :</strong> En main propre à Cotonou ou livraison à domicile partout au Bénin.</p>
+                    <p><strong>Frais :</strong> Gratuit à Cotonou, 5.000-10.000 FCFA ailleurs.</p>
+                    <p><strong>Délais :</strong> Immédiat en main propre, 1-3 jours pour livraison.</p>
+                </div>
+                <div class="info-block">
+                    <h5><i class="fas fa-shield-alt"></i> Garantie et Sécurité</h5>
+                    <p><strong>Garantie :</strong> 6 mois sur les défauts matériels.</p>
+                    <p><strong>Politique de retour :</strong> Échange possible sous 48h si problème technique.</p>
+                </div>
+            </section>
             <button class="add-to-cart" data-product="PS5 SLIM SCELLÉE +10 JEUX" data-price="460000">Ajouter au panier</button>
         </div>
     </main>
@@ -167,7 +137,6 @@
     <script src="cart.js"></script>
     <script src="script.js"></script>
     <script>
-        // JavaScript pour le carrousel
         document.addEventListener('DOMContentLoaded', () => {
             const carousel = document.querySelector('.carousel');
             const images = carousel.querySelectorAll('img');
@@ -175,17 +144,12 @@
             const nextButton = carousel.querySelector('.next');
             let currentImageIndex = 0;
 
-            // Afficher la première image
             images[currentImageIndex].classList.add('active');
-
-            // Bouton suivant
             nextButton.addEventListener('click', () => {
                 images[currentImageIndex].classList.remove('active');
                 currentImageIndex = (currentImageIndex + 1) % images.length;
                 images[currentImageIndex].classList.add('active');
             });
-
-            // Bouton précédent
             prevButton.addEventListener('click', () => {
                 images[currentImageIndex].classList.remove('active');
                 currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
