@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Détails de la PS3 Slim & Ultra Slim avec 256Go et 25 jeux - Cardy-Store">
+    <title>PS3 Slim & Ultra Slim - Cardy-Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles pour la page de détails */
+        .product-details {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .product-details h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .product-details .product-offer,
+        .product-details .product-description,
+        .product-details .product-price,
+        .product-details .product-note {
+            margin: 10px 0;
+        }
+        .product-details .product-price {
+            font-size: 24px;
+            font-weight: 500;
+            color: #333;
+        }
+        .product-details .add-to-cart {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .product-details .add-to-cart:hover {
+            background-color: #218838;
+        }
+        /* Styles pour le carrousel */
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: none;
+            border-radius: 8px;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .carousel-button.prev {
+            left: 10px;
+        }
+        .carousel-button.next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Cardy-Store Logo" class="logo-img">
+                    <span class="logo-text">CARDY-STORE</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <button class="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="produits.html" class="active">Produits</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="search-toggle" aria-label="Toggle search">
+                    <span>🔍</span>
+                </button>
+                <a href="#" class="cart-icon" id="cartButton">
+                    <span>🛒</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Rechercher un produit...">
+                <button class="search-close">×</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Details -->
+    <main class="product-details">
+        <div class="container">
+            <h3>PS3 SLIM & ULTRA SLIM</h3>
+            <div class="carousel">
+                <img src="images/ps3-slim-2.jpg" alt="PS3 Slim & Ultra Slim - Vue 1">
+                <img src="images/ps3-slim-3.jpg" alt="PS3 Slim & Ultra Slim - Vue 2">
+                <img src="images/ps3-slim-4.jpg" alt="PS3 Slim & Ultra Slim - Vue 3">
+                <button class="carousel-button prev">&larr;</button>
+                <button class="carousel-button next">&rarr;</button>
+            </div>
+            <p class="product-offer">256Go + 25 jeux</p>
+            <p class="product-description">Console PlayStation 3 Slim ou Ultra Slim avec disque dur 256Go</p>
+            <p class="product-price">85.000 FCFA</p>
+            <p class="product-note">Tous les accessoires inclus</p>
+            <button class="add-to-cart" data-product="PS3 SLIM 256Go +25 JEUX" data-price="85000">Ajouter au panier</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
+            <div class="footer-links">
+                <a href="#">Politique de Confidentialité</a>
+                <a href="#">Conditions d'Utilisation</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://wa.me/2290166364730" aria-label="WhatsApp">📱</a>
+                <a href="#" aria-label="Facebook">📘</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Votre Panier</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <p>Total: <span id="cartTotal">0</span> FCFA</p>
+            </div>
+            <button id="checkoutButton" class="cta-button">Payer via WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // JavaScript pour le carrousel
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.carousel');
+            const images = carousel.querySelectorAll('img');
+            const prevButton = carousel.querySelector('.prev');
+            const nextButton = carousel.querySelector('.next');
+            let currentImageIndex = 0;
+
+            // Afficher la première image
+            images[currentImageIndex].classList.add('active');
+
+            // Bouton suivant
+            nextButton.addEventListener('click', () => {
+                images[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                images[currentImageIndex].classList.add('active');
+            });
+
+            // Bouton précédent
+            prevButton.addEventListener('click', () => {
+                images[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                images[currentImageIndex].classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
