@@ -8,546 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Styles généraux */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        .header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-        
-        .logo a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #333;
-        }
-        
-        .logo-img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #0046be; /* Bleu PlayStation */
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-menu li {
-            margin-left: 20px;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-menu a:hover {
-            color: #0046be;
-        }
-        
-        .header-actions {
-            display: flex;
-            align-items: center;
-        }
-        
-        .search-toggle, .cart-icon {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-left: 15px;
-            position: relative;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: #e60012; /* Rouge PlayStation */
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .search-box {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: white;
-            padding: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-        
-        .search-box input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .search-close {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .nav-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-        
-        /* Hero Section avec défilement d'images */
-        .hero {
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            margin-top: 70px; /* Pour compenser le header fixe */
-        }
-        
-        .hero-slider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 300%;
-            display: flex;
-            flex-direction: column;
-            animation: slideUp 30s infinite;
-        }
-        
-        .hero-slide {
-            height: 33.33%; /* 3 images donc 33.33% chacune */
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            z-index: 1;
-        }
-        
-        .hero-overlay .container {
-            max-width: 800px;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero h2 {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: #0046be;
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        
-        .cta-button:hover {
-            background-color: #003399;
-        }
-        
-        @keyframes slideUp {
-            0%, 20% {
-                transform: translateY(0);
-            }
-            33.33%, 53.33% {
-                transform: translateY(-33.33%);
-            }
-            66.66%, 86.66% {
-                transform: translateY(-66.66%);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        
-        /* Sections suivantes */
-        section {
-            padding: 80px 0;
-        }
-        
-        h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-            color: #333;
-        }
-        
-        /* Promotions */
-        .promotions {
-            background-color: white;
-        }
-        
-        .promo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .promo-card {
-            background-color: #f8f8f8;
-            padding: 30px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .promo-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #0046be;
-        }
-        
-        .promo-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #e60012;
-        }
-        
-        .promo-details ul {
-            list-style: none;
-            text-align: center;
-        }
-        
-        .promo-details li {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .service-card {
-            background-color: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-        
-        /* Produits */
-        .products {
-            background-color: #f8f8f8;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .product-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .product-card h3 {
-            padding: 15px;
-            font-size: 1.3rem;
-            color: #0046be;
-        }
-        
-        .product-offer {
-            padding: 0 15px;
-            color: #e60012;
-            font-weight: 500;
-        }
-        
-        .product-price {
-            padding: 10px 15px;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        
-        .product-note {
-            padding: 0 15px 15px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        .add-to-cart {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: #0046be;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-        
-        .add-to-cart:hover {
-            background-color: #003399;
-        }
-        
-        .view-all {
-            text-align: center;
-        }
-        
-        /* Contact */
-        .contact-info {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .contact-info p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        
-        .map {
-            margin-bottom: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .contact-button {
-            text-align: center;
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .footer p {
-            margin-bottom: 20px;
-        }
-        
-        .footer-links {
-            margin-bottom: 20px;
-        }
-        
-        .footer-links a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-        
-        .social-icons a {
-            display: inline-block;
-            margin: 0 10px;
-            font-size: 1.5rem;
-        }
-        
-        /* Modal Panier */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 8px;
-            position: relative;
-        }
-        
-        .close {
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .cart-total {
-            text-align: right;
-            margin: 20px 0;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .nav-menu li {
-                margin: 0;
-                border-bottom: 1px solid #eee;
-            }
-            
-            .nav-menu a {
-                display: block;
-                padding: 15px 20px;
-            }
-            
-            .nav-toggle {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero h2 {
-                font-size: 1.2rem;
-            }
-            
-            .promo-grid, .services-grid, .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header avec logo au centre -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <!-- Remplacez par votre logo -->
-                    <img src="logo-playstation.png" alt="Cardy-Store Logo" class="logo-img">
+                    <img src="images/logo.png" alt="Cardy-Store Logo" class="logo-img">
                     <span class="logo-text">CARDY-STORE</span>
                 </a>
             </div>
-            
+
             <nav class="nav">
                 <button class="nav-toggle" aria-label="Toggle menu">
                     <span></span>
@@ -555,13 +28,13 @@
                     <span></span>
                 </button>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html" class="active">Accueil</a></li>
                     <li><a href="produits.html">Produits</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            
+
             <div class="header-actions">
                 <button class="search-toggle" aria-label="Toggle search">
                     <span>🔍</span>
@@ -571,7 +44,7 @@
                     <span class="cart-count">0</span>
                 </a>
             </div>
-            
+
             <div class="search-box">
                 <input type="text" placeholder="Rechercher un produit...">
                 <button class="search-close">×</button>
@@ -579,146 +52,74 @@
         </div>
     </header>
 
-    <!-- Hero Section avec défilement d'images -->
-    <section class="hero">
-        <div class="hero-slider">
-            <!-- Remplacez les URLs par vos propres images -->
-            <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/0046be/ffffff?text=PS5+Console')"></div>
-            <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/e60012/ffffff?text=Jeux+PS4')"></div>
-            <div class="hero-slide" style="background-image: url('https://via.placeholder.com/1920x1080/333333/ffffff?text=Accessoires+PlayStation')"></div>
-        </div>
-        
-        <div class="hero-overlay">
-            <div class="container">
-                <h1>VENTE DE PLAYSTATION - CARDY-STORE</h1>
-                <h2>Consoles PS2, PS3, PS4, PS5 - Copie et Réparation</h2>
-                <a href="#promotions" class="cta-button">Découvrir Nos Offres</a>
+    <!-- Section défilement photos (3 images du haut vers le bas) -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="images/slide1.jpg" alt="PS5 Console">
+            </div>
+            <div class="slide">
+                <img src="images/slide2.jpg" alt="Jeux PS4">
+            </div>
+            <div class="slide">
+                <img src="images/slide3.jpg" alt="Accessoires PlayStation">
             </div>
         </div>
     </section>
 
-    <!-- Promotions Section -->
-    <section id="promotions" class="promotions">
+    <!-- Section Produits Far (nom et prix seulement) -->
+    <section class="featured-products">
         <div class="container">
-            <h2>Nos Offres Spéciales</h2>
-            <div class="promo-grid">
-                <div class="promo-card">
-                    <h3>3 Jeux</h3>
-                    <p class="promo-price">38.000 FCFA</p>
-                </div>
-                <div class="promo-card">
-                    <h3>6 Jeux</h3>
-                    <p class="promo-price">65.000 FCFA</p>
-                </div>
-                <div class="promo-card">
-                    <h3>10 Jeux</h3>
-                    <p class="promo-price">85.000 FCFA</p>
-                </div>
-            </div>
-            
-            <div class="promo-details">
-                <ul>
-                    <li>PS4 version 11.50 à 12 et PS5 toutes versions</li>
-                    <li>Copie de PS4 version 9.00- 11.00 possible</li>
-                    <li>Copie de jeu PS3 à partir de 1.500 FCFA l'unité</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Nos Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <p>Copie et Installation des Meilleurs Jeux</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎮</div>
-                    <p>Ventes de Manettes de PS3 à PS5</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <p>Réparation des Consoles de PS3 à PS5</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📡</div>
-                    <p>WiFi Zone</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎪</div>
-                    <p>Salle de Jeux</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🛒</div>
-                    <p>Vente de Consoles PS2 à PS5</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products">
-        <div class="container">
-            <h2>Nos Articles</h2>
+            <h2>Nos Produits Populaires</h2>
             <div class="products-grid">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/0046be/ffffff?text=PS5" alt="PS5 Slim Scellée">
-                    <h3>PS5 SLIM SCELLÉE</h3>
-                    <p class="product-offer">+10 JEUX AU CHOIX</p>
-                    <p class="product-price">480.000 FCFA</p>
-                    <p class="product-note">375.000 FCFA sans les jeux</p>
-                    <button class="add-to-cart" data-product="PS5 SLIM SCELLÉE +10 JEUX" data-price="460000">Acheter</button>
+                <!-- Produit 1 -->
+                <div class="product-card" data-product-id="1">
+                    <div class="product-image">
+                        <img src="images/ps5-slim.jpg" alt="PS5 Slim Scellée">
+                    </div>
+                    <div class="product-info">
+                        <h3>PS5 SLIM SCELLÉE</h3>
+                        <p class="product-price">480.000 FCFA</p>
+                        <button class="view-details">Voir détails</button>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/666666/ffffff?text=PS4" alt="PS4 Fat">
-                    <h3>PS4 FAT</h3>
-                    <p class="product-offer">+10 à 15 jeux + 500Go</p>
-                    <p class="product-price">165.000 FCFA</p>
-                    <p class="product-note">Tous les accessoires inclus</p>
-                    <button class="add-to-cart" data-product="PS4 FAT +10-15 JEUX" data-price="165000">Acheter</button>
+
+                <!-- Produit 2 -->
+                <div class="product-card" data-product-id="2">
+                    <div class="product-image">
+                        <img src="images/ps4-fat.jpg" alt="PS4 Fat">
+                    </div>
+                    <div class="product-info">
+                        <h3>PS4 FAT</h3>
+                        <p class="product-price">165.000 FCFA</p>
+                        <button class="view-details">Voir détails</button>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/333333/ffffff?text=PS3" alt="PS3 Slim & Ultra Slim">
-                    <h3>PS3 SLIM & ULTRA SLIM</h3>
-                    <p class="product-offer">256Go + 25 jeux</p>
-                    <p class="product-price">85.000 FCFA</p>
-                    <p class="product-note">Tous les accessoires inclus</p>
-                    <button class="add-to-cart" data-product="PS4 FAT +10-15 JEUX" data-price="165000">Acheter</button>
+
+                <!-- Produit 3 -->
+                <div class="product-card" data-product-id="3">
+                    <div class="product-image">
+                        <img src="images/ps3-slim.jpg" alt="PS3 Slim">
+                    </div>
+                    <div class="product-info">
+                        <h3>PS3 SLIM & ULTRA SLIM</h3>
+                        <p class="product-price">85.000 FCFA</p>
+                        <button class="view-details">Voir détails</button>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/333333/ffffff?text=PS3" alt="PS3 Slim & Ultra Slim">
-                    <h3>PS3 SLIM & ULTRA SLIM</h3>
-                    <p class="product-offer">256Go + 25 jeux</p>
-                    <p class="product-price">85.000 FCFA</p>
-                    <p class="product-note">Tous les accessoires inclus</p>
-                    <button class="add-to-cart" data-product="PS3 SLIM 256Go +25 JEUX" data-price="85000">Acheter</button>
-                </div>
-            </div>
-            <div class="view-all">
-                <a href="produits.html" class="cta-button">Voir tous les produits</a>
+
+                <!-- Ajoutez d'autres produits ici -->
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact">
-        <div class="container">
-            <h2>Nous Contacter</h2>
-            <div class="contact-info">
-                <p>📍 Situés à Menontin, Église Catholique, en face de l'immeuble blanc (au bord du pavé)</p>
-                <p>📞 +229 01 66 36 47 30</p>
-            </div>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.017509299716!2d2.389025274831502!3d6.370344093588956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023555b41e1724d%3A0x6c35b3c1c1c1c1c1!2sMenontin%2C%20Cotonou%2C%20Benin!5e0!3m2!1sen!2s!4v1642345678901!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="contact-button">
-                <a href="contact.html" class="cta-button">Envoyer un message</a>
-            </div>
+    <!-- Modal pour les détails du produit -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="productDetails"></div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -748,117 +149,7 @@
         </div>
     </div>
 
-    <script>
-        // Menu mobile
-        document.querySelector('.nav-toggle').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-        });
-        
-        // Recherche
-        document.querySelector('.search-toggle').addEventListener('click', function() {
-            document.querySelector('.search-box').style.display = 'block';
-        });
-        
-        document.querySelector('.search-close').addEventListener('click', function() {
-            document.querySelector('.search-box').style.display = 'none';
-        });
-        
-        // Panier
-        let cart = [];
-        const cartButton = document.getElementById('cartButton');
-        const cartModal = document.getElementById('cartModal');
-        const closeModal = document.querySelector('.close');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const cartCount = document.querySelector('.cart-count');
-        const checkoutButton = document.getElementById('checkoutButton');
-        
-        // Ouvrir le panier
-        cartButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            cartModal.style.display = 'block';
-            updateCartDisplay();
-        });
-        
-        // Fermer le panier
-        closeModal.addEventListener('click', function() {
-            cartModal.style.display = 'none';
-        });
-        
-        // Fermer le panier en cliquant à l'extérieur
-        window.addEventListener('click', function(e) {
-            if (e.target === cartModal) {
-                cartModal.style.display = 'none';
-            }
-        });
-        
-        // Ajouter au panier
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.getAttribute('data-product');
-                const price = parseInt(this.getAttribute('data-price'));
-                
-                cart.push({ product, price });
-                updateCartCount();
-                
-                // Afficher une confirmation
-                alert(`${product} a été ajouté au panier!`);
-            });
-        });
-        
-        // Mettre à jour le compteur du panier
-        function updateCartCount() {
-            cartCount.textContent = cart.length;
-        }
-        
-        // Mettre à jour l'affichage du panier
-        function updateCartDisplay() {
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p>Votre panier est vide.</p>';
-                cartTotal.textContent = '0';
-                return;
-            }
-            
-            let itemsHTML = '';
-            let total = 0;
-            
-            cart.forEach(item => {
-                itemsHTML += `
-                    <div class="cart-item">
-                        <p>${item.product}</p>
-                        <p>${item.price.toLocaleString()} FCFA</p>
-                    </div>
-                `;
-                total += item.price;
-            });
-            
-            cartItems.innerHTML = itemsHTML;
-            cartTotal.textContent = total.toLocaleString();
-        }
-        
-        // Payer via WhatsApp
-        checkoutButton.addEventListener('click', function() {
-            if (cart.length === 0) {
-                alert('Votre panier est vide!');
-                return;
-            }
-            
-            let message = "Bonjour! Je souhaite commander les articles suivants:\n\n";
-            let total = 0;
-            
-            cart.forEach(item => {
-                message += `- ${item.product}: ${item.price.toLocaleString()} FCFA\n`;
-                total += item.price;
-            });
-            
-            message += `\nTotal: ${total.toLocaleString()} FCFA`;
-            message += "\n\nMerci!";
-            
-            const phoneNumber = "2290166364730";
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            window.open(url, '_blank');
-        });
-    </script>
+    <script src="cart.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
