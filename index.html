@@ -8,7 +8,238 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #000;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .logo-img {
+            max-height: 50px;
+        }
+
+        .logo-text {
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 1s ease;
+        }
+
+        .carousel-item {
+            width: 33.33%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            color: #fff;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-item h1 {
+            font-size: 2.5em;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel-item h2 {
+            font-size: 1.5em;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel-item p {
+            font-size: 1.1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+        }
+
+        .carousel-item .cta-button {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 5px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 40px 0;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .products-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            width: 23%;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-price {
+            font-size: 1.2em;
+            color: #e60000;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        /* Product Details Modal */
+        .product-details {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            max-width: 400px;
+        }
+
+        .product-details.active {
+            display: block;
+        }
+
+        .close-details {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            max-width: 400px;
+        }
+
+        .cart-modal.active {
+            display: block;
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-total {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .close-cart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0073aa;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -20,223 +251,195 @@
                     <span class="logo-text">CARDY-STORE</span>
                 </a>
             </div>
-            
-            <nav class="nav">
-                <button class="nav-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="produits.html">Produits</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <button class="search-toggle" aria-label="Toggle search">
-                    <span>🔍</span>
-                </button>
-                <a href="#" class="cart-icon" id="cartButton">
-                    <span>🛒</span>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-            
-            <div class="search-box">
-                <input type="text" placeholder="Rechercher un produit...">
-                <button class="search-close">×</button>
-            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay">
-            <div class="container">
-                <h1>VENTE DE PLAYSTATION - CARDY-STORE</h1>
-                <h2>Consoles PS2, PS3, PS4, PS5 - Copie et Réparation</h2>
-                <a href="#promotions" class="cta-button">Découvrir Nos Offres</a>
+    <!-- Carousel Section -->
+    <section class="carousel">
+        <div class="carousel-slide">
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400?text=Ash+&+Iron+1" alt="Ash & Iron 1">
+                <h1>v2 | MAJOR UPDATE: ASH & IRON</h1>
+                <h2>Return to the Plaguelands</h2>
+                <p>Ash & Iron est disponible maintenant pour tous les joueurs de Destiny 2, apportant une nouvelle aventure, des activités et des récompenses au jeu.</p>
+                <a href="#produits" class="cta-button">Découvrir Maintenant</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Promotions Section -->
-    <section id="promotions" class="promotions">
-        <div class="container">
-            <h2>Nos Offres Spéciales</h2>
-            <div class="promo-grid">
-                <div class="promo-card">
-                    <h3>3 Jeux</h3>
-                    <p class="promo-price">38.000 FCFA</p>
-                </div>
-                <div class="promo-card">
-                    <h3>6 Jeux</h3>
-                    <p class="promo-price">65.000 FCFA</p>
-                </div>
-                <div class="promo-card">
-                    <h3>10 Jeux</h3>
-                    <p class="promo-price">85.000 FCFA</p>
-                </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400?text=Ash+&+Iron+2" alt="Ash & Iron 2">
+                <h1>v2 | NEW CHALLENGES</h1>
+                <h2>Explore New Missions</h2>
+                <p>Découvrez de nouvelles missions épiques et des équipements exclusifs dans les Plaguelands.</p>
+                <a href="#produits" class="cta-button">En Savoir Plus</a>
             </div>
-            
-            <div class="promo-details">
-                <ul>
-                    <li>PS4 version 11.50 à 12 et PS5 toutes versions</li>
-                    <li>Copie de PS4 version 9.00- 11.00 possible</li>
-                    <li>Copie de jeu PS3 à partir de 1.500 FCFA l'unité</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Nos Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <p>Copie et Installation des Meilleurs Jeux</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎮</div>
-                    <p>Ventes de Manettes de PS3 à PS5</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <p>Réparation des Consoles de PS3 à PS5</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📡</div>
-                    <p>WiFi Zone</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎪</div>
-                    <p>Salle de Jeux</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🛒</div>
-                    <p>Vente de Consoles PS2 à PS5</p>
-                </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400?text=Ash+&+Iron+3" alt="Ash & Iron 3">
+                <h1>v2 | EXCLUSIVE REWARDS</h1>
+                <h2>Collect Unique Gear</h2>
+                <p>Obtenez des récompenses spéciales et améliorez votre expérience de jeu.</p>
+                <a href="#produits" class="cta-button">Acheter Maintenant</a>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-<section class="products">
-    <div class="container">
-        <h2>Nos Articles</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="images/ps5.jpg" alt="PS5 Slim Scellée" loading="lazy">
-                <h3>PS5 SLIM SCELLÉE</h3>
-                <p class="product-offer">+10 JEUX AU CHOIX</p>
-                <p class="product-price">480.000 FCFA</p>
-                <p class="product-note">375.000 FCFA sans les jeux</p>
-                <button class="add-to-cart" data-product="PS5 SLIM SCELLÉE +10 JEUX" data-price="460000" data-info="Console PS5 Slim scellée avec 10 jeux au choix, garantie incluse. Cliquez pour voir plus de photos.">Acheter</button>
-                <!-- Ajouter ici la logique pour afficher 3 autres photos de l'article au clic -->
-            </div>
-            <div class="product-card">
-                <img src="images/ps4-fat.jpg" alt="PS4 Fat" loading="lazy">
-                <h3>PS4 FAT</h3>
-                <p class="product-offer">+10 à 15 jeux + 500Go</p>
-                <p class="product-price">165.000 FCFA</p>
-                <p class="product-note">Tous les accessoires inclus</p>
-                <button class="add-to-cart" data-product="PS4 FAT +10-15 JEUX" data-price="165000" data-info="Console PS4 Fat avec 500Go, 10 à 15 jeux et tous les accessoires inclus. Cliquez pour voir plus de photos.">Acheter</button>
-                <!-- Ajouter ici la logique pour afficher 3 autres photos de l'article au clic -->
-            </div>
-            <div class="product-card">
-                <img src="images/ps3-slim.jpg" alt="PS3 Slim & Ultra Slim" loading="lazy">
-                <h3>PS3 SLIM & ULTRA SLIM</h3>
-                <p class="product-offer">256Go + 25 jeux</p>
-                <p class="product-price">85.000 FCFA</p>
-                <p class="product-note">Tous les accessoires inclus</p>
-                <button class="add-to-cart" data-product="PS3 SLIM 256Go +25 JEUX" data-price="85000" data-info="Console PS3 Slim & Ultra Slim avec 256Go, 25 jeux et tous les accessoires inclus. Cliquez pour voir plus de photos.">Acheter</button>
-                <!-- Ajouter ici la logique pour afficher 3 autres photos de l'article au clic -->
-            </div>
-            <div class="product-card">
-                <img src="images/ps4-slim.jpg" alt="PS4 Slim" loading="lazy">
-                <h3>PS4 SLIM</h3>
-                <p class="product-offer">500Go + 10 à 15 jeux</p>
-                <p class="product-price">200.000 FCFA</p>
-                <p class="product-note">Tous les accessoires inclus</p>
-                <button class="add-to-cart" data-product="PS4 SLIM 500Go +10-15 JEUX" data-price="200000" data-info="Console PS4 Slim avec 500Go, 10 à 15 jeux et tous les accessoires inclus. Cliquez pour voir plus de photos.">Acheter</button>
-                <!-- Ajouter ici la logique pour afficher 3 autres photos de l'article au clic -->
-            </div>
-            <div class="product-card">
-                <img src="images/ps4-pro.jpg" alt="PS4 Pro" loading="lazy">
-                <h3>PS4 PRO</h3>
-                <p class="product-offer">1To + 20 jeux</p>
-                <p class="product-price">275.000 FCFA</p>
-                <p class="product-note">Tous les accessoires inclus</p>
-                <button class="add-to-cart" data-product="PS4 PRO 1To +20 JEUX" data-price="275000" data-info="Console PS4 Pro avec 1To, 20 jeux et tous les accessoires inclus. Cliquez pour voir plus de photos.">Acheter</button>
-                <!-- Ajouter ici la logique pour afficher 3 autres photos de l'article au clic -->
-            </div>
-            <div class="product-card">
-                <img src="images/ps2-fat.jpg" alt="PS2 Fat" loading="lazy">
-                <h3>PS2 FAT</h3>
-                <p class="product-offer">34 jeux + clé 32Go</p>
-                <p class="product-price">35.000 FCFA</p>
-                <p class="product-note">Tous les accessoires inclus</p>
-                <button class="add-to-cart" data-product="PS2 FAT 34 JEUX + CLÉ 32Go" data-price="35000" data-info="Console PS2 Fat avec 34 jeux, clé USB 32Go et tous les accessoires inclus. Cliquez pour voir plus de photos.">Acheter</button>
-                <!-- Ajouter ici la logique pour afficher 3 autres photos de l'article au clic -->
-            </div>
-        </div>
-        <div class="view-all">
-            <a href="produits.html" class="cta-button">Voir tous les produits</a>
-        </div>
-    </div>
-</section>
-</section>
-    <!-- Contact Section -->
-    <section class="contact">
+    <section class="products" id="produits">
         <div class="container">
-            <h2>Nous Contacter</h2>
-            <div class="contact-info">
-                <p>📍 Situés à Menontin, Église Catholique, en face de l'immeuble blanc (au bord du pavé)</p>
-                <p>📞 +229 01 66 36 47 30</p>
-            </div>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.017509299716!2d2.389025274831502!3d6.370344093588956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023555b41e1724d%3A0x6c35b3c1c1c1c1c1!2sMenontin%2C%20Cotonou%2C%20Benin!5e0!3m2!1sen!2s!4v1642345678901!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="contact-button">
-                <a href="contact.html" class="cta-button">Envoyer un message</a>
+            <h2>Nos Produits en Avant</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="showDetails('ps5')">
+                    <img src="images/ps5.jpg" alt="PS5 Slim" loading="lazy">
+                    <p class="product-price">390,000 FCFA</p>
+                </div>
+                <div class="product-card" onclick="showDetails('ps4')">
+                    <img src="images/ps4-fat.jpg" alt="PS4" loading="lazy">
+                    <p class="product-price">165,000 FCFA</p>
+                </div>
+                <div class="product-card" onclick="showDetails('ps3')">
+                    <img src="images/ps3-slim.jpg" alt="PS3 Slim & Ultra Slim" loading="lazy">
+                    <p class="product-price">85,000 FCFA</p>
+                </div>
+                <div class="product-card" onclick="showDetails('ps2')">
+                    <img src="images/ps2-fat.jpg" alt="PS2" loading="lazy">
+                    <p class="product-price">35,000 FCFA</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
-            <div class="footer-links">
-                <a href="#">Politique de Confidentialité</a>
-                <a href="#">Conditions d'Utilisation</a>
-            </div>
-            <div class="social-icons">
-                <a href="https://wa.me/2290166364730" aria-label="WhatsApp">📱</a>
-                <a href="#" aria-label="Facebook">📘</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Cart Modal -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Votre Panier</h2>
-            <div id="cartItems"></div>
-            <div class="cart-total">
-                <p>Total: <span id="cartTotal">0</span> FCFA</p>
-            </div>
-            <button id="checkoutButton" class="cta-button">Payer via WhatsApp</button>
-        </div>
+    <!-- Product Details Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="product-details" id="productDetails">
+        <span class="close-details" onclick="hideDetails()">&times;</span>
+        <h3 id="productTitle"></h3>
+        <p id="productInfo"></p>
+        <p id="productNote"></p>
+        <button class="cta-button" onclick="addToCart()">Acheter</button>
     </div>
 
-    <script src="cart.js"></script>
-    <script src="script.js"></script>
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <span class="close-cart" onclick="hideCart()">&times;</span>
+        <h2>Votre Panier</h2>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-total">
+            <p>Total: <span id="cartTotal">0 FCFA</span></p>
+        </div>
+        <a href="mailto:contact@cardy-store.com?subject=Commande&body=Voici ma commande : %0D%0A" id="checkoutButton" class="cta-button">Payer via WhatsApp</a>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelector('.carousel-slide');
+        const totalSlides = document.querySelectorAll('.carousel-item').length;
+
+        function showSlides() {
+            slideIndex++;
+            if (slideIndex >= totalSlides) slideIndex = 0;
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        setInterval(showSlides, 5000);
+
+        // Cart Logic
+        let cart = [];
+
+        function showDetails(productId) {
+            const overlay = document.getElementById('overlay');
+            const details = document.getElementById('productDetails');
+            const title = document.getElementById('productTitle');
+            const info = document.getElementById('productInfo');
+            const note = document.getElementById('productNote');
+
+            let productData;
+            switch (productId) {
+                case 'ps5':
+                    productData = {
+                        title: 'PS5 Slim',
+                        info: 'Console PS5 Slim scellée avec garantie incluse.',
+                        note: '375,000 FCFA sans jeux.',
+                        price: 390000
+                    };
+                    break;
+                case 'ps4':
+                    productData = {
+                        title: 'PS4',
+                        info: 'Console PS4 Fat avec 500Go, 10 à 15 jeux et tous les accessoires inclus.',
+                        note: 'Tous les accessoires inclus.',
+                        price: 165000
+                    };
+                    break;
+                case 'ps3':
+                    productData = {
+                        title: 'PS3 Slim & Ultra Slim',
+                        info: 'Console PS3 avec 256Go, 25 jeux et tous les accessoires inclus.',
+                        note: 'Tous les accessoires inclus.',
+                        price: 85000
+                    };
+                    break;
+                case 'ps2':
+                    productData = {
+                        title: 'PS2',
+                        info: 'Console PS2 Fat avec 34 jeux, clé USB 32Go et tous les accessoires inclus.',
+                        note: 'Tous les accessoires inclus.',
+                        price: 35000
+                    };
+                    break;
+            }
+
+            title.textContent = productData.title;
+            info.textContent = productData.info;
+            note.textContent = productData.note;
+
+            overlay.classList.add('active');
+            details.classList.add('active');
+        }
+
+        function hideDetails() {
+            const overlay = document.getElementById('overlay');
+            const details = document.getElementById('productDetails');
+            overlay.classList.remove('active');
+            details.classList.remove('active');
+        }
+
+        function addToCart() {
+            const title = document.getElementById('productTitle').textContent;
+            const price = parseInt(document.getElementById('productInfo').textContent.match(/\d+/)[0]) || 0; // Extraire le prix si présent
+            const existingProduct = cart.find(item => item.title === title);
+
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({ title, price, quantity: 1 });
+            }
+
+            updateCart();
+            hideDetails();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            cartItems.innerHTML = '';
+
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartItems.innerHTML += `<p>${item.title} x${item.quantity} - ${itemTotal} FCFA</p>`;
+            });
+
+            cartTotal.textContent = `${total} FCFA`;
+        }
+
+        function hideCart() {
+            const cartModal = document.getElementById('cartModal');
+            cartModal.classList.remove('active');
+        }
+
+        // Ouvrir le panier après ajout (facultatif)
+        addToCart(); // Appelé après addToCart pour ouvrir la modale
+        const cartModal = document.getElementById('cartModal');
+        cartModal.classList.add('active');
+    </script>
 </body>
 </html>
