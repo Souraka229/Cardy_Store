@@ -3,64 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez nos consoles PlayStation - PS2, PS3, PS4, PS5, jeux et accessoires.">
-    <title>Produits - Cardy-Store</title>
+    <meta name="description" content="Découvrez tous nos produits PlayStation - consoles PS2, PS3, PS4, PS5">
+    <title>Tous les Produits - Cardy-Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Styles pour la grille simplifiée */
-        .products-grid.detailed {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            position: relative;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .product-card:hover {
-            transform: scale(1.05);
-        }
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .product-card h3 {
-            font-size: 16px;
-            font-weight: 500;
-            margin: 10px 0 5px;
-            color: #333;
-        }
-        .product-card .product-price {
-            font-size: 18px;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
             <div class="logo">
                 <a href="index.html">
                     <img src="images/logo.png" alt="Cardy-Store Logo" class="logo-img">
                     <span class="logo-text">CARDY-STORE</span>
                 </a>
             </div>
-
+            
             <nav class="nav">
-                <button class="nav-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
                 <ul class="nav-menu">
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="produits.html" class="active">Produits</a></li>
@@ -68,90 +35,81 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-
+            
             <div class="header-actions">
-                <button class="search-toggle" aria-label="Toggle search">
-                    <span>🔍</span>
-                </button>
                 <a href="#" class="cart-icon" id="cartButton">
                     <span>🛒</span>
                     <span class="cart-count">0</span>
                 </a>
             </div>
-
-            <div class="search-box">
-                <input type="text" placeholder="Rechercher un produit...">
-                <button class="search-close">×</button>
-            </div>
         </div>
     </header>
 
-    <!-- Products Page Content -->
+    <!-- Products Page -->
     <main class="products-page">
         <div class="container">
-            <h1>Nos Articles</h1>
-
-            <div class="filter-section">
-                <label for="productFilter">Filtrer par:</label>
-                <select id="productFilter">
-                    <option value="all">Tous les produits</option>
-                    <option value="ps5">PS5</option>
-                    <option value="ps4">PS4</option>
-                    <option value="ps3">PS3</option>
-                    <option value="ps2">PS2</option>
-                    <option value="games">Jeux</option>
-                    <option value="accessories">Accessoires</option>
-                </select>
-            </div>
-
-            <div class="products-grid detailed">
-                <a href="ps5-slim.html" class="product-card" data-category="ps5">
-                    <img src="images/ps5-slim.jpg" alt="PS5 Slim Scellée" loading="lazy">
-                    <h3>PS5 SLIM SCELLÉE</h3>
-                    <p class="product-price">480.000 FCFA</p>
-                </a>
-
-                <a href="ps4-fat.html" class="product-card" data-category="ps4">
-                    <img src="images/ps4-fat.jpg" alt="PS4 Fat" loading="lazy">
-                    <h3>PS4 FAT</h3>
-                    <p class="product-price">165.000 FCFA</p>
-                </a>
-
-                <a href="ps3-slim.html" class="product-card" data-category="ps3">
-                    <img src="images/ps3-slim.jpg" alt="PS3 Slim & Ultra Slim" loading="lazy">
-                    <h3>PS3 SLIM & ULTRA SLIM</h3>
-                    <p class="product-price">85.000 FCFA</p>
-                </a>
-
-                <a href="ps4-slim.html" class="product-card" data-category="ps4">
-                    <img src="images/ps4-slim.jpg" alt="PS4 Slim" loading="lazy">
-                    <h3>PS4 SLIM</h3>
-                    <p class="product-price">200.000 FCFA</p>
-                </a>
-
-                <a href="ps4-pro.html" class="product-card" data-category="ps4">
-                    <img src="images/ps4-pro.jpg" alt="PS4 Pro" loading="lazy">
-                    <h3>PS4 PRO</h3>
-                    <p class="product-price">275.000 FCFA</p>
-                </a>
-
-                <a href="ps2-fat.html" class="product-card" data-category="ps2">
-                    <img src="images/ps2-fat.jpg" alt="PS2 Fat" loading="lazy">
-                    <h3>PS2 FAT</h3>
-                    <p class="product-price">35.000 FCFA</p>
-                </a>
-
-                <a href="fifa-23.html" class="product-card" data-category="games">
-                    <img src="images/game1.jpg" alt="Jeu FIFA 23" loading="lazy">
-                    <h3>FIFA 23 - PS5</h3>
-                    <p class="product-price">25.000 FCFA</p>
-                </a>
-
-                <a href="dualsense.html" class="product-card" data-category="accessories">
-                    <img src="images/controller.jpg" alt="Manette DualSense" loading="lazy">
-                    <h3>Manette DualSense</h3>
-                    <p class="product-price">45.000 FCFA</p>
-                </a>
+            <h1>Tous Nos Produits</h1>
+            
+            <div class="products-grid full-grid">
+                <!-- PS5 SLIM -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps5-slim" class="product-link">
+                        <img src="images/ps5-slim.jpg" alt="PS5 Slim Scellée" loading="lazy">
+                        <h3>PS5 SLIM SCELLÉE</h3>
+                        <p class="product-price">480.000 FCFA</p>
+                    </a>
+                    <button class="add-to-cart" data-product="PS5 SLIM SCELLÉE +10 JEUX" data-price="480000">Acheter</button>
+                </div>
+                
+                <!-- PS4 FAT -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps4-fat" class="product-link">
+                        <img src="images/ps4-fat.jpg" alt="PS4 Fat" loading="lazy">
+                        <h3>PS4 FAT</h3>
+                        <p class="product-price">165.000 FCFA</p>
+                    </a>
+                    <button class="add-to-cart" data-product="PS4 FAT +10-15 JEUX" data-price="165000">Acheter</button>
+                </div>
+                
+                <!-- PS3 SLIM -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps3-slim" class="product-link">
+                        <img src="images/ps3-slim.jpg" alt="PS3 Slim" loading="lazy">
+                        <h3>PS3 SLIM</h3>
+                        <p class="product-price">85.000 FCFA</p>
+                    </a>
+                    <button class="add-to-cart" data-product="PS3 SLIM 256Go +25 JEUX" data-price="85000">Acheter</button>
+                </div>
+                
+                <!-- PS4 SLIM -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps4-slim" class="product-link">
+                        <img src="images/ps4-slim.jpg" alt="PS4 Slim" loading="lazy">
+                        <h3>PS4 SLIM</h3>
+                        <p class="product-price">200.000 FCFA</p>
+                    </a>
+                    <button class="add-to-cart" data-product="PS4 SLIM 500Go +10-15 JEUX" data-price="200000">Acheter</button>
+                </div>
+                
+                <!-- PS4 PRO -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps4-pro" class="product-link">
+                        <img src="images/ps4-pro.jpg" alt="PS4 Pro" loading="lazy">
+                        <h3>PS4 PRO</h3>
+                        <p class="product-price">275.000 FCFA</p>
+                    </a>
+                    <button class="add-to-cart" data-product="PS4 PRO 1To +20 JEUX" data-price="275000">Acheter</button>
+                </div>
+                
+                <!-- PS2 FAT -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps2-fat" class="product-link">
+                        <img src="images/ps2-fat.jpg" alt="PS2 Fat" loading="lazy">
+                        <h3>PS2 FAT</h3>
+                        <p class="product-price">35.000 FCFA</p>
+                    </a>
+                    <button class="add-to-cart" data-product="PS2 FAT 34 JEUX + CLÉ 32Go" data-price="35000">Acheter</button>
+                </div>
             </div>
         </div>
     </main>
@@ -159,14 +117,24 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
-            <div class="footer-links">
-                <a href="#">Politique de Confidentialité</a>
-                <a href="#">Conditions d'Utilisation</a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CARDY-STORE</h3>
+                    <p>Votre spécialiste PlayStation à Cotonou</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📍 Menontin, Cotonou</p>
+                    <p>📞 +229 01 66 36 47 30</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <a href="index.html">Accueil</a>
+                    <a href="contact.html">Contact</a>
+                </div>
             </div>
-            <div class="social-icons">
-                <a href="https://wa.me/2290166364730" aria-label="WhatsApp">📱</a>
-                <a href="#" aria-label="Facebook">📘</a>
+            <div class="footer-bottom">
+                <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -184,7 +152,7 @@
         </div>
     </div>
 
-    <script src="cart.js"></script>
     <script src="script.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
