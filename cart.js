@@ -23,7 +23,7 @@ class ShoppingCart {
                 e.target.style.backgroundColor = '#4CAF50';
 
                 setTimeout(() => {
-                    e.target.textContent = e.target.dataset.originalText || 'Ajouter au panier';
+                    e.target.textContent = e.target.dataset.originalText || 'Acheter';
                     e.target.style.backgroundColor = '';
                 }, 1500);
             }
@@ -40,11 +40,14 @@ class ShoppingCart {
     }
 
     addItem(product, price) {
+        // Vérifier si le produit est déjà dans le panier
         const existingItemIndex = this.cart.findIndex(item => item.product === product);
 
         if (existingItemIndex !== -1) {
+            // Produit déjà présent, augmenter la quantité
             this.cart[existingItemIndex].quantity += 1;
         } else {
+            // Nouveau produit
             this.cart.push({
                 product: product,
                 price: price,
@@ -70,6 +73,7 @@ class ShoppingCart {
         if (this.cart[index]) {
             this.cart[index].quantity += change;
 
+            // Supprimer si la quantité devient 0
             if (this.cart[index].quantity <= 0) {
                 this.removeItem(index);
             } else {
@@ -88,6 +92,7 @@ class ShoppingCart {
 
     updateCartCount() {
         const totalItems = this.cart.reduce((total, item) => total + item.quantity, 0);
+
         const cartCountElements = document.querySelectorAll('.cart-count');
         cartCountElements.forEach(element => {
             element.textContent = totalItems;
@@ -103,6 +108,7 @@ class ShoppingCart {
         const cartItems = document.getElementById('cartItems');
         const cartTotal = document.getElementById('cartTotal');
 
+        // Vider le contenu précédent
         cartItems.innerHTML = '';
 
         if (this.cart.length === 0) {
@@ -111,6 +117,7 @@ class ShoppingCart {
         } else {
             let total = 0;
 
+            // Ajouter chaque article
             this.cart.forEach((item, index) => {
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
@@ -134,11 +141,15 @@ class ShoppingCart {
             });
 
             cartTotal.textContent = total.toLocaleString();
+
+            // Ajouter les écouteurs d'événements pour les boutons
             this.bindCartItemEvents();
         }
 
+        // Afficher le modal
         modal.style.display = 'block';
 
+        // Fermer le modal
         const closeButton = document.querySelector('.close');
         closeButton.onclick = () => {
             modal.style.display = 'none';
@@ -150,6 +161,7 @@ class ShoppingCart {
             }
         };
 
+        // Bouton de paiement
         const checkoutButton = document.getElementById('checkoutButton');
         checkoutButton.onclick = () => {
             this.checkout();
@@ -157,27 +169,30 @@ class ShoppingCart {
     }
 
     bindCartItemEvents() {
+        // Boutons plus
         document.querySelectorAll('.quantity-btn.plus').forEach(button => {
             button.addEventListener('click', (e) => {
                 const index = parseInt(e.target.dataset.index);
                 this.updateQuantity(index, 1);
-                this.openCart();
+                this.openCart(); // Rafraîchir l'affichage
             });
         });
 
+        // Boutons moins
         document.querySelectorAll('.quantity-btn.minus').forEach(button => {
             button.addEventListener('click', (e) => {
                 const index = parseInt(e.target.dataset.index);
                 this.updateQuantity(index, -1);
-                this.openCart();
+                this.openCart(); // Rafraîchir l'affichage
             });
         });
 
+        // Boutons de suppression
         document.querySelectorAll('.remove-btn').forEach(button => {
             button.addEventListener('click', (e) => {
                 const index = parseInt(e.target.dataset.index);
                 this.removeItem(index);
-                this.openCart();
+                this.openCart(); // Rafraîchir l'affichage
             });
         });
     }
@@ -188,9 +203,10 @@ class ShoppingCart {
             return;
         }
 
+        // Construire le message WhatsApp
         let message = "Bonjour, je souhaite commander les articles suivants :%0A%0A";
-        let total = 0;
 
+        let total = 0;
         this.cart.forEach(item => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
@@ -200,19 +216,25 @@ class ShoppingCart {
         message += `%0ATotal : ${total.toLocaleString()} FCFA%0A%0A`;
         message += "Merci de me contacter pour finaliser la commande.";
 
+        // Numéro de téléphone
         const phoneNumber = "2290166364730";
+
+        // Ouvrir WhatsApp
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
 
+        // Vider le panier après la commande
         this.cart = [];
         this.saveCart();
         this.updateCartCount();
+
+        // Fermer le modal
         document.getElementById('cartModal').style.display = 'none';
 
         alert('Vous allez être redirigé vers WhatsApp pour finaliser votre commande.');
     }
 }
 
-// Initialiser le panier
+// Initialiser le panier lorsque le DOM est chargé
 document.addEventListener('DOMContentLoaded', function() {
     window.shoppingCart = new ShoppingCart();
 });
