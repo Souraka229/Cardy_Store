@@ -3,177 +3,265 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu hamburger
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
-
+    
     if (navToggle) {
         navToggle.addEventListener('click', function() {
             this.classList.toggle('active');
             navMenu.classList.toggle('active');
-        });
-    }
-
-    // Recherche toggle
-    const searchToggle = document.querySelector('.search-toggle');
-    const searchBox = document.querySelector('.search-box');
-    const searchClose = document.querySelector('.search-close');
-
-    if (searchToggle) {
-        searchToggle.addEventListener('click', function() {
-            searchBox.classList.toggle('active');
-        });
-    }
-
-    if (searchClose) {
-        searchClose.addEventListener('click', function() {
-            searchBox.classList.remove('active');
-        });
-    }
-
-    // Gestion des détails produits
-    const viewDetailsButtons = document.querySelectorAll('.view-details');
-    const productModal = document.getElementById('productModal');
-    const productDetails = document.getElementById('productDetails');
-
-    // Données des produits (à remplacer par vos vraies données)
-    const productsData = {
-        1: {
-            name: "PS5 SLIM SCELLÉE",
-            price: "480.000 FCFA",
-            description: "Console PS5 Slim neuve et scellée avec garantie",
-            details: "+10 JEUX AU CHOIX\n375.000 FCFA sans les jeux",
-            images: ["images/ps5-slim.jpg", "images/ps5-slim-2.jpg"],
-            features: [
-                "Console PS5 Slim neuve scellée",
-                "Manette DualSense incluse",
-                "Garantie 1 an",
-                "10 jeux au choix inclus"
-            ]
-        },
-        2: {
-            name: "PS4 FAT",
-            price: "165.000 FCFA",
-            description: "Console PS4 Fat avec disque dur 500Go",
-            details: "+10 à 15 jeux inclus\nTous les accessoires inclus",
-            images: ["images/ps4-fat.jpg", "images/ps4-fat-2.jpg"],
-            features: [
-                "Console PS4 Fat 500Go",
-                "Manette DualShock 4 incluse",
-                "10-15 jeux préinstallés",
-                "Câbles HDMI et alimentation"
-            ]
-        },
-        3: {
-            name: "PS3 SLIM & ULTRA SLIM",
-            price: "85.000 FCFA",
-            description: "Console PS3 Slim ou Ultra Slim reconditionnée",
-            details: "256Go + 25 jeux\nTous les accessoires inclus",
-            images: ["images/ps3-slim.jpg", "images/ps3-slim-2.jpg"],
-            features: [
-                "Console PS3 Slim/Ultra Slim",
-                "Disque dur 256Go",
-                "25 jeux préinstallés",
-                "Manette Sixaxis incluse"
-            ]
-        }
-    };
-
-    // Ouvrir les détails du produit
-    viewDetailsButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.closest('.product-card').dataset.productId;
-            const product = productsData[productId];
             
-            if (product) {
-                showProductDetails(product);
+            // Animation des lignes du hamburger
+            const spans = this.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
             }
         });
-    });
-
-    function showProductDetails(product) {
-        productDetails.innerHTML = `
-            <div class="product-detail">
-                <div class="product-images">
-                    <img src="${product.images[0]}" alt="${product.name}">
-                </div>
-                <div class="product-info">
-                    <h3>${product.name}</h3>
-                    <p class="product-description">${product.description}</p>
-                    <p class="product-price">${product.price}</p>
-                    <div class="product-features">
-                        <h4>Caractéristiques :</h4>
-                        <ul>
-                            ${product.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <button class="add-to-cart" 
-                            data-product="${product.name}" 
-                            data-price="${parseInt(product.price.replace(/\D/g, ''))}">
-                        Ajouter au panier
-                    </button>
-                </div>
-            </div>
-        `;
-
-        productModal.style.display = 'block';
-
-        // Ajouter l'écouteur pour le bouton d'ajout au panier
-        const addToCartButton = productDetails.querySelector('.add-to-cart');
-        if (addToCartButton && window.shoppingCart) {
-            addToCartButton.addEventListener('click', function() {
-                const product = this.dataset.product;
-                const price = parseInt(this.dataset.price);
-                window.shoppingCart.addItem(product, price);
-                
-                // Feedback visuel
-                this.textContent = 'Ajouté !';
-                this.style.backgroundColor = '#4CAF50';
-                
-                setTimeout(() => {
-                    this.textContent = 'Ajouter au panier';
-                    this.style.backgroundColor = '';
-                }, 1500);
-            });
-        }
     }
-
-    // Fermer le modal
-    const closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            modal.style.display = 'none';
+    
+    // Fermer le menu en cliquant sur un lien
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            const spans = navToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
         });
     });
-
-    // Fermer le modal en cliquant à l'extérieur
-    window.addEventListener('click', function(event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
-        }
+    
+    // Gestion des boutons "Ajouter au panier"
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const product = this.dataset.product;
+            const price = parseInt(this.dataset.price);
+            
+            addToCart(product, price);
+            
+            // Animation de feedback
+            const originalText = this.textContent;
+            this.textContent = 'Ajouté !';
+            this.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.backgroundColor = '#0046be';
+            }, 1500);
+        });
     });
-
+    
+    // Ouvrir le panier
+    const cartButton = document.getElementById('cartButton');
+    if (cartButton) {
+        cartButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            openCart();
+        });
+    }
+    
     // Animation au défilement
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.product-card');
+        const elements = document.querySelectorAll('.product-card, .service-card');
         
         elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
             const screenPosition = window.innerHeight / 1.3;
             
             if (elementPosition < screenPosition) {
-                element.style.opacity = 1;
+                element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
             }
         });
     };
-
-    // Initialiser les animations
-    const animatedElements = document.querySelectorAll('.product-card');
+    
+    // Initialiser les éléments animés
+    const animatedElements = document.querySelectorAll('.product-card, .service-card');
     animatedElements.forEach(element => {
-        element.style.opacity = 0;
+        element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
-
+    
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll();
+});
+
+// Fonctions du panier
+function addToCart(product, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    const existingItemIndex = cart.findIndex(item => item.product === product);
+    
+    if (existingItemIndex !== -1) {
+        cart[existingItemIndex].quantity += 1;
+    } else {
+        cart.push({
+            product: product,
+            price: price,
+            quantity: 1
+        });
+    }
+    
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    const cartCountElements = document.querySelectorAll('.cart-count');
+    cartCountElements.forEach(element => {
+        element.textContent = totalItems;
+    });
+}
+
+function openCart() {
+    const modal = document.getElementById('cartModal');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    cartItems.innerHTML = '';
+    
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<p style="text-align: center; padding: 20px;">Votre panier est vide.</p>';
+        cartTotal.textContent = '0';
+    } else {
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = `
+                <div class="cart-item-info">
+                    <h4>${item.product}</h4>
+                    <p>${item.price.toLocaleString()} FCFA x ${item.quantity}</p>
+                </div>
+                <div class="cart-item-actions">
+                    <button class="quantity-btn minus" data-index="${index}">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="quantity-btn plus" data-index="${index}">+</button>
+                    <button class="remove-btn" data-index="${index}">×</button>
+                </div>
+            `;
+            
+            cartItems.appendChild(cartItem);
+        });
+        
+        cartTotal.textContent = total.toLocaleString();
+        
+        // Événements pour les boutons du panier
+        document.querySelectorAll('.quantity-btn.plus').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                updateQuantity(index, 1);
+            });
+        });
+        
+        document.querySelectorAll('.quantity-btn.minus').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                updateQuantity(index, -1);
+            });
+        });
+        
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                removeFromCart(index);
+            });
+        });
+    }
+    
+    modal.style.display = 'block';
+    
+    const closeButton = document.querySelector('.close');
+    closeButton.onclick = function() {
+        modal.style.display = 'none';
+    };
+    
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+    
+    const checkoutButton = document.getElementById('checkoutButton');
+    checkoutButton.onclick = function() {
+        checkout();
+    };
+}
+
+function updateQuantity(index, change) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (cart[index]) {
+        cart[index].quantity += change;
+        
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        openCart();
+    }
+}
+
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (cart[index]) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        openCart();
+    }
+}
+
+function checkout() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (cart.length === 0) {
+        alert('Votre panier est vide.');
+        return;
+    }
+    
+    let message = "Bonjour, je souhaite commander les articles suivants :%0A%0A";
+    
+    let total = 0;
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        message += `- ${item.product} (x${item.quantity}) : ${itemTotal.toLocaleString()} FCFA%0A`;
+    });
+    
+    message += `%0ATotal : ${total.toLocaleString()} FCFA%0A%0A`;
+    message += "Merci de me contacter pour finaliser la commande.";
+    
+    const phoneNumber = "2290166364730";
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    
+    localStorage.removeItem('cart');
+    updateCartCount();
+    document.getElementById('cartModal').style.display = 'none';
+    
+    alert('Vous allez être redirigé vers WhatsApp pour finaliser votre commande.');
+}
+
+// Initialiser le compteur du panier au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
 });
