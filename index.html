@@ -11,127 +11,163 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header avec logo au centre -->
+    <!-- Header -->
     <header class="header">
         <div class="container">
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
             <div class="logo">
                 <a href="index.html">
                     <img src="images/logo.png" alt="Cardy-Store Logo" class="logo-img">
                     <span class="logo-text">CARDY-STORE</span>
                 </a>
             </div>
-
+            
             <nav class="nav">
-                <button class="nav-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="index.html">Accueil</a></li>
                     <li><a href="produits.html">Produits</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-
+            
             <div class="header-actions">
-                <button class="search-toggle" aria-label="Toggle search">
-                    <span>🔍</span>
-                </button>
                 <a href="#" class="cart-icon" id="cartButton">
                     <span>🛒</span>
                     <span class="cart-count">0</span>
                 </a>
             </div>
-
-            <div class="search-box">
-                <input type="text" placeholder="Rechercher un produit...">
-                <button class="search-close">×</button>
-            </div>
         </div>
     </header>
 
-    <!-- Section défilement photos (3 images du haut vers le bas) -->
-    <section class="hero-slider">
-        <div class="slider-container">
-            <div class="slide active">
-                <img src="images/slide1.jpg" alt="PS5 Console">
-            </div>
-            <div class="slide">
-                <img src="images/slide2.jpg" alt="Jeux PS4">
-            </div>
-            <div class="slide">
-                <img src="images/slide3.jpg" alt="Accessoires PlayStation">
+    <!-- Hero Section avec défilement d'images -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide" style="background-image: url('images/slide1.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('images/slide2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('images/slide3.jpg');"></div>
+        </div>
+        <div class="hero-overlay">
+            <div class="container">
+                <h1>VENTE DE PLAYSTATION - CARDY-STORE</h1>
+                <h2>Consoles PS2, PS3, PS4, PS5 - Copie et Réparation</h2>
+                <a href="#produits" class="cta-button">Découvrir Nos Produits</a>
             </div>
         </div>
     </section>
 
-    <!-- Section Produits Far (nom et prix seulement) -->
-    <section class="featured-products">
+    <!-- Produits Section -->
+    <section id="produits" class="products">
         <div class="container">
-            <h2>Nos Produits Populaires</h2>
+            <h2>Nos Produits Phares</h2>
             <div class="products-grid">
-                <!-- Produit 1 -->
-                <div class="product-card" data-product-id="1">
-                    <div class="product-image">
-                        <img src="images/ps5-slim.jpg" alt="PS5 Slim Scellée">
-                    </div>
-                    <div class="product-info">
+                <!-- PS5 -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps5-slim" class="product-link">
+                        <img src="images/ps5-slim.jpg" alt="PS5 Slim Scellée" loading="lazy">
                         <h3>PS5 SLIM SCELLÉE</h3>
                         <p class="product-price">480.000 FCFA</p>
-                        <button class="view-details">Voir détails</button>
-                    </div>
+                    </a>
+                    <button class="add-to-cart" data-product="PS5 SLIM SCELLÉE +10 JEUX" data-price="480000">Acheter</button>
                 </div>
-
-                <!-- Produit 2 -->
-                <div class="product-card" data-product-id="2">
-                    <div class="product-image">
-                        <img src="images/ps4-fat.jpg" alt="PS4 Fat">
-                    </div>
-                    <div class="product-info">
+                
+                <!-- PS4 FAT -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps4-fat" class="product-link">
+                        <img src="images/ps4-fat.jpg" alt="PS4 Fat" loading="lazy">
                         <h3>PS4 FAT</h3>
                         <p class="product-price">165.000 FCFA</p>
-                        <button class="view-details">Voir détails</button>
-                    </div>
+                    </a>
+                    <button class="add-to-cart" data-product="PS4 FAT +10-15 JEUX" data-price="165000">Acheter</button>
                 </div>
-
-                <!-- Produit 3 -->
-                <div class="product-card" data-product-id="3">
-                    <div class="product-image">
-                        <img src="images/ps3-slim.jpg" alt="PS3 Slim">
-                    </div>
-                    <div class="product-info">
-                        <h3>PS3 SLIM & ULTRA SLIM</h3>
+                
+                <!-- PS3 SLIM -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps3-slim" class="product-link">
+                        <img src="images/ps3-slim.jpg" alt="PS3 Slim" loading="lazy">
+                        <h3>PS3 SLIM</h3>
                         <p class="product-price">85.000 FCFA</p>
-                        <button class="view-details">Voir détails</button>
-                    </div>
+                    </a>
+                    <button class="add-to-cart" data-product="PS3 SLIM 256Go +25 JEUX" data-price="85000">Acheter</button>
                 </div>
-
-                <!-- Ajoutez d'autres produits ici -->
+                
+                <!-- PS4 SLIM -->
+                <div class="product-card">
+                    <a href="produit-details.html?product=ps4-slim" class="product-link">
+                        <img src="images/ps4-slim.jpg" alt="PS4 Slim" loading="lazy">
+                        <h3>PS4 SLIM</h3>
+                        <p class="product-price">200.000 FCFA</p>
+                    </a>
+                    <button class="add-to-cart" data-product="PS4 SLIM 500Go +10-15 JEUX" data-price="200000">Acheter</button>
+                </div>
+            </div>
+            
+            <div class="view-all">
+                <a href="produits.html" class="cta-button">Voir tous les produits</a>
             </div>
         </div>
     </section>
 
-    <!-- Modal pour les détails du produit -->
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="productDetails"></div>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <p>Copie et Installation des Jeux</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <p>Ventes de Manettes</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <p>Réparation des Consoles</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📡</div>
+                    <p>WiFi Zone</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-preview">
+        <div class="container">
+            <h2>Besoin d'aide ?</h2>
+            <p>Nous sommes à votre disposition pour toute question</p>
+            <a href="contact.html" class="cta-button">Nous Contacter</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
-            <div class="footer-links">
-                <a href="#">Politique de Confidentialité</a>
-                <a href="#">Conditions d'Utilisation</a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CARDY-STORE</h3>
+                    <p>Votre spécialiste PlayStation à Cotonou</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📍 Menontin, Cotonou</p>
+                    <p>📞 +229 01 66 36 47 30</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <a href="produits.html">Produits</a>
+                    <a href="contact.html">Contact</a>
+                </div>
             </div>
-            <div class="social-icons">
-                <a href="https://wa.me/2290166364730" aria-label="WhatsApp">📱</a>
-                <a href="#" aria-label="Facebook">📘</a>
+            <div class="footer-bottom">
+                <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -149,7 +185,7 @@
         </div>
     </div>
 
-    <script src="cart.js"></script>
     <script src="script.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
