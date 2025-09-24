@@ -1,151 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contactez Cardy-Store pour toute question sur nos produits et services PlayStation.">
-    <title>Contact - Cardy-Store</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Cardy-Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <button class="nav-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Cardy-Store Logo" class="logo-img">
-                    <span class="logo-text">CARDY-STORE</span>
-                </a>
-            </div>
-            
-            <nav class="nav">
-                <ul class="nav-menu">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="produits.html">Produits</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <a href="#" class="cart-icon" id="cartButton">
-                    <span>🛒</span>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Contact Page -->
-    <main class="contact-page">
-        <div class="container">
-            <h1>Nous Contacter</h1>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2>Informations de contact</h2>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <p>Menontin, Église Catholique, en face de l'immeuble blanc (au bord du pavé), Cotonou, Bénin</p>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <p>+229 01 66 36 47 30</p>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">⏰</span>
-                        <p>Lundi - Samedi: 8h00 - 20h00<br>Dimanche: 10h00 - 18h00</p>
-                    </div>
-                    
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.017509299716!2d2.389025274831502!3d6.370344093588956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023555b41e1724d%3A0x6c35b3c1c1c1c1c1!2sMenontin%2C%20Cotonou%2C%20Benin!5e0!3m2!1sen!2s!4v1642345678901!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h2>Envoyez-nous un message</h2>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nom complet *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Sujet *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Sélectionnez un sujet</option>
-                                <option value="question">Question sur un produit</option>
-                                <option value="repair">Demande de réparation</option>
-                                <option value="game-copy">Demande de copie de jeux</option>
-                                <option value="other">Autre</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="cta-button">Envoyer le message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>CARDY-STORE</h3>
-                    <p>Votre spécialiste PlayStation à Cotonou</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>📍 Menontin, Cotonou</p>
-                    <p>📞 +229 01 66 36 47 30</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Liens Rapides</h3>
-                    <a href="index.html">Accueil</a>
-                    <a href="produits.html">Produits</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 Cardy-Store Bénin. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Cart Modal -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Votre Panier</h2>
-            <div id="cartItems"></div>
-            <div class="cart-total">
-                <p>Total: <span id="cartTotal">0</span> FCFA</p>
-            </div>
-            <button id="checkoutButton" class="cta-button">Payer via WhatsApp</button>
-        </div>
+<header>
+  <div class="header-container">
+    <div id="menu-hamburger" aria-label="Menu navigation" aria-expanded="false" role="button" tabindex="0">
+      <span></span><span></span><span></span>
     </div>
+    <img src="images/logo.png" alt="Logo Cardy Store" class="logo" />
+    <nav id="nav-menu" class="nav-closed" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" tabindex="0">Accueil</a></li>
+        <li><a href="produits.html" tabindex="0">Produits</a></li>
+        <li><a href="services.html" tabindex="0">Services</a></li>
+        <li><a href="contact.html" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <script src="script.js"></script>
-    <script src="cart.js"></script>
+<main>
+  <section class="contact-info" aria-label="Informations de contact">
+    <h1>Contactez-nous</h1>
+    <p><strong>Adresse :</strong> Menontin, Église Catholique, face immeuble blanc, Cotonou</p>
+    <p><strong>Téléphone :</strong> +229 01 66 36 47 30</p>
+    <p><strong>Horaires :</strong> Lun-Sam 8h00-20h00, Dim 10h00-18h00</p>
+    <div class="map-container">
+      <iframe src="https://maps.google.com/maps?q=Menontin,%20%C3%89glise%20Catholique,%20Cotonou&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" aria-label="Carte Google Maps de Cardy-Store" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="contact-form" aria-label="Formulaire de contact">
+    <h2>Envoyez-nous un message</h2>
+    <form id="contactForm" action="mailto:contact@cardy-store.bj" method="POST" enctype="text/plain">
+      <label for="name">Nom</label>
+      <input type="text" id="name" name="name" required />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+      <label for="phone">Téléphone</label>
+      <input type="tel" id="phone" name="phone" />
+      <label for="subject">Sujet</label>
+      <input type="text" id="subject" name="subject" required />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <button type="submit" class="btn-primary">Envoyer</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p>Cardy-Store &copy; 2025 | Menontin, Église Catholique, Cotonou | Téléphone: +229 01 66 36 47 30</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    // Simple JS validation (HTML5 does most)
+    const form = this;
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      alert('Veuillez remplir tous les champs requis correctement.');
+    }
+  });
+</script>
 </body>
 </html>
