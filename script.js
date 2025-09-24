@@ -1,267 +1,242 @@
-// Navigation mobile
-document.addEventListener('DOMContentLoaded', function() {
-    // Menu hamburger
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            
-            // Animation des lignes du hamburger
-            const spans = this.querySelectorAll('span');
-            if (navMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
+// Données produits (liste complète)
+const products = [
+  {
+    id: 'ps5-slim',
+    name: 'PS5 Slim Scellée',
+    price: 480000,
+    priceNoGames: 375000,
+    offer: '+10 jeux au choix',
+    description: 'Version la plus récente, design compact, performances optimisées',
+    state: 'Neuf scellé avec garantie',
+    images: ['images/ps5-slim.jpg'],
+    accessories: [],
+    category: 'console'
+  },
+  {
+    id: 'ps4-fat',
+    name: 'PS4 Fat',
+    price: 165000,
+    offer: '+10 à 15 jeux + 500Go',
+    description: 'Version originale, robuste, performances fiables',
+    state: 'Reconditionné avec garantie',
+    images: ['images/ps4-fat.jpg'],
+    accessories: ['manette', 'câbles', 'support'],
+    category: 'console'
+  },
+  {
+    id: 'ps3-slim',
+    name: 'PS3 Slim',
+    price: 85000,
+    offer: '256Go + 25 jeux',
+    description: 'Design élégant et compact, large bibliothèque de jeux classiques',
+    state: 'Reconditionné avec garantie',
+    images: ['images/ps3-slim.jpg'],
+    accessories: ['manette', 'câbles'],
+    category: 'console'
+  },
+  {
+    id: 'ps4-slim',
+    name: 'PS4 Slim',
+    price: 200000,
+    offer: '500Go + 10 à 15 jeux',
+    description: 'Design 30% plus mince, consommation réduite, silencieuse',
+    state: 'Reconditionné avec garantie',
+    images: ['images/ps4-slim.jpg'],
+    accessories: ['manette', 'câbles', 'support'],
+    category: 'console'
+  },
+  {
+    id: 'ps4-pro',
+    name: 'PS4 Pro',
+    price: 275000,
+    offer: '1To + 20 jeux',
+    description: 'Performances 4K, graphismes améliorés, version haute performance',
+    state: 'Reconditionné avec garantie',
+    images: ['images/ps4-pro.jpg'],
+    accessories: ['manette', 'câbles', 'support'],
+    category: 'console'
+  },
+  {
+    id: 'ps2-fat',
+    name: 'PS2 Fat',
+    price: 35000,
+    offer: '34 jeux + clé 32Go',
+    description: 'Console légendaire, immense bibliothèque de jeux classiques',
+    state: 'Reconditionné avec garantie',
+    images: ['images/ps2-fat.jpg'],
+    accessories: ['manette', 'câbles'],
+    category: 'console'
+  }
+];
+
+// Gestion menu hamburger
+const menuHamburger = document.getElementById('menu-hamburger');
+const navMenu = document.getElementById('nav-menu');
+if(menuHamburger){
+  menuHamburger.addEventListener('click', () => {
+    const expanded = menuHamburger.getAttribute('aria-expanded') === 'true';
+    menuHamburger.setAttribute('aria-expanded', String(!expanded));
+    navMenu.classList.toggle('nav-open');
+    navMenu.classList.toggle('nav-closed');
+  });
+
+  menuHamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      menuHamburger.click();
     }
-    
-    // Fermer le menu en cliquant sur un lien
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-            const spans = navToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
-        });
+  });
+}
+
+// Fonction affichage produits phares (accueil)
+function displayFeatured() {
+  const featuredContainer = document.getElementById('featured-products');
+  if (!featuredContainer) return;
+  const featured = products.slice(0, 4); // 4 produits max
+  featuredContainer.innerHTML = '';
+  featured.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'produit-card';
+    card.tabIndex = 0;
+    card.innerHTML = `
+      <img src="${p.images[0]}" alt="Console ${p.name}" loading="lazy" />
+      <div class="produit-info">
+        <h3>${p.name}</h3>
+        <p class="prix">${p.price.toLocaleString('fr-FR')} FCFA</p>
+      </div>`;
+    card.addEventListener('click', () => {
+      window.location.href = `produit-details.html?id=${p.id}`;
     });
-    
-    // Gestion des boutons "Ajouter au panier"
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const product = this.dataset.product;
-            const price = parseInt(this.dataset.price);
-            
-            addToCart(product, price);
-            
-            // Animation de feedback
-            const originalText = this.textContent;
-            this.textContent = 'Ajouté !';
-            this.style.backgroundColor = '#4CAF50';
-            
-            setTimeout(() => {
-                this.textContent = originalText;
-                this.style.backgroundColor = '#0046be';
-            }, 1500);
-        });
+    featuredContainer.appendChild(card);
+  });
+}
+
+// Fonction affichage catalogue complet
+function displayAllProducts() {
+  const allContainer = document.getElementById('all-products');
+  if (!allContainer) return;
+  allContainer.innerHTML = '';
+  products.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'produit-card';
+    card.tabIndex = 0;
+    card.innerHTML = `
+      <img src="${p.images[0]}" alt="Console ${p.name}" loading="lazy" />
+      <div class="produit-info">
+        <h3>${p.name}</h3>
+        <p class="prix">${p.price.toLocaleString('fr-FR')} FCFA</p>
+      </div>`;
+    card.addEventListener('click', () => {
+      window.location.href = `produit-details.html?id=${p.id}`;
     });
-    
-    // Ouvrir le panier
-    const cartButton = document.getElementById('cartButton');
-    if (cartButton) {
-        cartButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            openCart();
-        });
-    }
-    
-    // Animation au défilement
-    const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.product-card, .service-card');
-        
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            
-            if (elementPosition < screenPosition) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    };
-    
-    // Initialiser les éléments animés
-    const animatedElements = document.querySelectorAll('.product-card, .service-card');
-    animatedElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    allContainer.appendChild(card);
+  });
+}
+
+// Fonction affichage détails produit
+function displayProductDetails() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (!id) return;
+
+  const produit = products.find(p => p.id === id);
+  if (!produit) return;
+
+  // Gallery images
+  const mainImage = document.getElementById('main-image');
+  const thumbnails = document.getElementById('thumbnails');
+  mainImage.src = produit.images[0];
+  mainImage.alt = `Image principale de ${produit.name}`;
+
+  thumbnails.innerHTML = '';
+  produit.images.forEach((img, i) => {
+    const thumb = document.createElement('img');
+    thumb.src = img;
+    thumb.alt = `Miniature ${i + 1} de ${produit.name}`;
+    thumb.loading = 'lazy';
+    thumb.tabIndex = 0;
+    thumb.addEventListener('click', () => {
+      mainImage.src = img;
     });
-    
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll();
-});
+    thumbnails.appendChild(thumb);
+  });
 
-// Fonctions du panier
-function addToCart(product, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    const existingItemIndex = cart.findIndex(item => item.product === product);
-    
-    if (existingItemIndex !== -1) {
-        cart[existingItemIndex].quantity += 1;
-    } else {
-        cart.push({
-            product: product,
-            price: price,
-            quantity: 1
-        });
-    }
-    
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-}
+  // Infos produit
+  const info = document.getElementById('product-info');
+  info.innerHTML = `
+    <h1>${produit.name}</h1>
+    <p class="prix">${produit.price.toLocaleString('fr-FR')} FCFA</p>
+    <p><strong>État :</strong> ${produit.state}</p>
+    <p><strong>Offre :</strong> ${produit.offer ?? ''}</p>
+    <p><strong>Description :</strong> ${produit.description}</p>
+    <p><strong>Caractéristiques :</strong> ${produit.accessories.length > 0 ? produit.accessories.join(', ') : 'Aucun accessoire'}</p>
+    <button id="addToCartBtn" class="btn-primary" aria-label="Ajouter au panier">Ajouter au panier</button>
+    <button id="orderWhatsappBtn" class="btn-secondary" aria-label="Commander via WhatsApp">Commander via WhatsApp</button>
+  `;
 
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    
-    const cartCountElements = document.querySelectorAll('.cart-count');
-    cartCountElements.forEach(element => {
-        element.textContent = totalItems;
+  // Gestion boutons panier et WhatsApp
+  document.getElementById('addToCartBtn').onclick = () => {
+    addToCart(produit);
+    alert('Produit ajouté au panier');
+  };
+  document.getElementById('orderWhatsappBtn').onclick = () => {
+    const msg = generateWhatsappOrderMessage([{ product: produit, quantity: 1 }]);
+    const phone = "+2290166364730";
+    const url = `https://wa.me/${phone.replace(/D/g, '')}?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  };
+
+  // Afficher produits similaires (mêmes catégorie)
+  const similar = products.filter(p => p.category === produit.category && p.id !== produit.id).slice(0, 4);
+  const simContainer = document.getElementById('similar-products');
+  if (!simContainer) return;
+  simContainer.innerHTML = '';
+  similar.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'produit-card';
+    card.tabIndex = 0;
+    card.innerHTML = `
+      <img src="${p.images[0]}" alt="Console ${p.name}" loading="lazy" />
+      <div class="produit-info">
+        <h3>${p.name}</h3>
+        <p class="prix">${p.price.toLocaleString('fr-FR')} FCFA</p>
+      </div>`;
+    card.addEventListener('click', () => {
+      window.location.href = `produit-details.html?id=${p.id}`;
     });
+    simContainer.appendChild(card);
+  });
 }
 
-function openCart() {
-    const modal = document.getElementById('cartModal');
-    const cartItems = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
-    
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    cartItems.innerHTML = '';
-    
-    if (cart.length === 0) {
-        cartItems.innerHTML = '<p style="text-align: center; padding: 20px;">Votre panier est vide.</p>';
-        cartTotal.textContent = '0';
-    } else {
-        let total = 0;
-        
-        cart.forEach((item, index) => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
-            
-            const cartItem = document.createElement('div');
-            cartItem.className = 'cart-item';
-            cartItem.innerHTML = `
-                <div class="cart-item-info">
-                    <h4>${item.product}</h4>
-                    <p>${item.price.toLocaleString()} FCFA x ${item.quantity}</p>
-                </div>
-                <div class="cart-item-actions">
-                    <button class="quantity-btn minus" data-index="${index}">-</button>
-                    <span>${item.quantity}</span>
-                    <button class="quantity-btn plus" data-index="${index}">+</button>
-                    <button class="remove-btn" data-index="${index}">×</button>
-                </div>
-            `;
-            
-            cartItems.appendChild(cartItem);
-        });
-        
-        cartTotal.textContent = total.toLocaleString();
-        
-        // Événements pour les boutons du panier
-        document.querySelectorAll('.quantity-btn.plus').forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.dataset.index);
-                updateQuantity(index, 1);
-            });
-        });
-        
-        document.querySelectorAll('.quantity-btn.minus').forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.dataset.index);
-                updateQuantity(index, -1);
-            });
-        });
-        
-        document.querySelectorAll('.remove-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.dataset.index);
-                removeFromCart(index);
-            });
-        });
-    }
-    
-    modal.style.display = 'block';
-    
-    const closeButton = document.querySelector('.close');
-    closeButton.onclick = function() {
-        modal.style.display = 'none';
-    };
-    
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    };
-    
-    const checkoutButton = document.getElementById('checkoutButton');
-    checkoutButton.onclick = function() {
-        checkout();
-    };
+// Ajouter produit au panier (localStorage)
+function addToCart(product) {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const index = cart.findIndex(i => i.product.id === product.id);
+  if (index !== -1) {
+    cart[index].quantity++;
+  } else {
+    cart.push({ product: product, quantity: 1 });
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function updateQuantity(index, change) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    if (cart[index]) {
-        cart[index].quantity += change;
-        
-        if (cart[index].quantity <= 0) {
-            cart.splice(index, 1);
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        openCart();
-    }
+// Générer message WhatsApp commande
+function generateWhatsappOrderMessage(cartItems) {
+  let msg = "Commande CARDY-STORE :%0A";
+  let total = 0;
+  cartItems.forEach(({ product, quantity }) => {
+    const line = `${product.name} x${quantity} = ${(product.price * quantity).toLocaleString('fr-FR')} FCFA`;
+    msg += line + "%0A";
+    total += product.price * quantity;
+  });
+  msg += `Total : ${total.toLocaleString('fr-FR')} FCFA%0A`;
+  msg += "Merci de votre commande !";
+  return msg;
 }
 
-function removeFromCart(index) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    if (cart[index]) {
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCount();
-        openCart();
-    }
-}
-
-function checkout() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    if (cart.length === 0) {
-        alert('Votre panier est vide.');
-        return;
-    }
-    
-    let message = "Bonjour, je souhaite commander les articles suivants :%0A%0A";
-    
-    let total = 0;
-    cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        message += `- ${item.product} (x${item.quantity}) : ${itemTotal.toLocaleString()} FCFA%0A`;
-    });
-    
-    message += `%0ATotal : ${total.toLocaleString()} FCFA%0A%0A`;
-    message += "Merci de me contacter pour finaliser la commande.";
-    
-    const phoneNumber = "2290166364730";
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-    
-    localStorage.removeItem('cart');
-    updateCartCount();
-    document.getElementById('cartModal').style.display = 'none';
-    
-    alert('Vous allez être redirigé vers WhatsApp pour finaliser votre commande.');
-}
-
-// Initialiser le compteur du panier au chargement
-document.addEventListener('DOMContentLoaded', function() {
-    updateCartCount();
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+  if(document.getElementById('featured-products')) displayFeatured();
+  if(document.getElementById('all-products')) displayAllProducts();
+  if(document.getElementById('product-info')) displayProductDetails();
 });
