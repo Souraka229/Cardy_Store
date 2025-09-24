@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Détails du produit - Cardy-Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <div id="menu-hamburger" aria-label="Menu navigation" aria-expanded="false" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <img src="images/logo.png" alt="Logo Cardy Store" class="logo" />
+    <nav id="nav-menu" class="nav-closed" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" tabindex="0">Accueil</a></li>
+        <li><a href="produits.html" tabindex="0">Produits</a></li>
+        <li><a href="services.html" tabindex="0">Services</a></li>
+        <li><a href="contact.html" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="product-details" aria-label="Détails du produit">
+    <div class="gallery">
+      <img id="main-image" src="" alt="Image principale produit" />
+      <div class="thumbnails" id="thumbnails">
+        <!-- Miniatures générées par script -->
+      </div>
+    </div>
+    <div class="product-info" id="product-info">
+      <!-- Infos dynamiques par script -->
+    </div>
+  </section>
+  <section class="similar-products" aria-label="Produits similaires">
+    <h2>Produits similaires</h2>
+    <div class="produits-grid" id="similar-products">
+      <!-- Produits similaires générés -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p>Cardy-Store &copy; 2025 | Menontin, Église Catholique, Cotonou | Téléphone: +229 01 66 36 47 30</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>
