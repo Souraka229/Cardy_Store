@@ -1,45 +1,200 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tous nos produits - Cardy-Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits - CARDY STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header>
-  <div class="header-container">
-    <div id="menu-hamburger" aria-label="Menu navigation" aria-expanded="false" role="button" tabindex="0">
-      <span></span><span></span><span></span>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="logo">
+                <img src="logo_cardystore.png" alt="CARDY STORE">
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+        
+        <!-- Menu déroulant -->
+        <nav class="dropdown-menu">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+            <a href="produits.html"><i class="fas fa-gamepad"></i> Produits</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- Contenu Produits -->
+    <section class="products-page">
+        <div class="container">
+            <h1 class="section-title">Tous nos Produits</h1>
+            
+            <!-- Barre de recherche -->
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Rechercher un produit...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="products-grid" id="all-products">
+                <!-- Les produits seront chargés dynamiquement -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> +229 01 66 36 47 30</p>
+                    <p><i class="fas fa-envelope"></i> info@cardystore.com</p>
+                    <p><i class="fab fa-whatsapp"></i> +229 01 66 36 47 30</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Adresse</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Menontin, Église Catholique</p>
+                    <p>En face de l'immeuble blanc (au bord du pavé)</p>
+                    <p>Cotonou, Bénin</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Vendredi: 8h00 - 19h00</p>
+                    <p>Samedi: 9h00 - 18h00</p>
+                    <p>Dimanche: 10h00 - 15h00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CARDY STORE. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Panier -->
+    <div class="cart-overlay"></div>
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h2>Votre Panier</h2>
+            <span class="close-cart"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="cart-items">
+            <!-- Les articles du panier seront ajoutés ici -->
+        </div>
+        <div class="cart-total">
+            Total: <span id="cart-total-amount">0</span> FCFA
+        </div>
+        <button class="btn" id="checkout-button">Payer via WhatsApp</button>
     </div>
-    <img src="images/logo.png" alt="Logo Cardy Store" class="logo" />
-    <nav id="nav-menu" class="nav-closed" aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html" tabindex="0">Accueil</a></li>
-        <li><a href="produits.html" tabindex="0">Produits</a></li>
-        <li><a href="services.html" tabindex="0">Services</a></li>
-        <li><a href="contact.html" tabindex="0">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
 
-<main>
-  <section class="catalogue" aria-labelledby="catalogue-title">
-    <h1 id="catalogue-title">Tous nos produits</h1>
-    <div class="produits-grid" id="all-products">
-      <!-- Tous les produits ajoutés par script.js -->
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="footer-content">
-    <p>Cardy-Store &copy; 2025 | Menontin, Église Catholique, Cotonou | Téléphone: +229 01 66 36 47 30</p>
-  </div>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Afficher tous les produits sur la page produits
+        document.addEventListener('DOMContentLoaded', function() {
+            const allProductsGrid = document.getElementById('all-products');
+            
+            // Données des produits (doivent correspondre à celles dans script.js)
+            const products = {
+                ps5: {
+                    name: "PS5 Slim",
+                    price: 390000,
+                    images: ["ps5_slim.jpg"],
+                    description: "PS5 Slim scellée : 480.000 FCFA, 375.000 sans jeux, +10 jeux au choix, neuf scellé avec garantie"
+                },
+                ps4fat: {
+                    name: "PS4 Fat",
+                    price: 165000,
+                    images: ["ps4_fat.jpg"],
+                    description: "PS4 Fat : 165.000 FCFA, +10-15 jeux +500Go, accessoires inclus, reconditionné"
+                },
+                ps4slim: {
+                    name: "PS4 Slim",
+                    price: 200000,
+                    images: ["ps4_slim.jpg"],
+                    description: "PS4 Slim : 200.000 FCFA, 500Go +10-15 jeux, accessoires inclus, reconditionné"
+                },
+                ps4pro: {
+                    name: "PS4 Pro",
+                    price: 275000,
+                    images: ["ps4_pro.jpg"],
+                    description: "PS4 Pro : 275.000 FCFA, 1To +20 jeux, accessoires inclus, reconditionné"
+                },
+                ps3: {
+                    name: "PS3 Slim & Ultra Slim",
+                    price: 85000,
+                    images: ["ps3_slim_ultraslim.jpg"],
+                    description: "PS3 Slim & Ultra Slim : 85.000 FCFA, 256Go +25 jeux, accessoires inclus, reconditionné"
+                },
+                ps2: {
+                    name: "PS2 Fat",
+                    price: 35000,
+                    images: ["ps2_fat.jpg"],
+                    description: "PS2 Fat : 35.000 FCFA, 34 jeux + clé 32Go, accessoires inclus, reconditionné"
+                },
+                pack3: {
+                    name: "Pack 3 Jeux",
+                    price: 38000,
+                    images: ["pack_jeux.jpg"],
+                    description: "Pack 3 Jeux : 38.000 FCFA, compatible PS4 v11.50-12 et PS5 toutes versions"
+                },
+                pack6: {
+                    name: "Pack 6 Jeux",
+                    price: 65000,
+                    images: ["pack_jeux.jpg"],
+                    description: "Pack 6 Jeux : 65.000 FCFA, compatible PS4 v11.50-12 et PS5 toutes versions"
+                },
+                pack10: {
+                    name: "Pack 10 Jeux",
+                    price: 85000,
+                    images: ["pack_jeux.jpg"],
+                    description: "Pack 10 Jeux : 85.000 FCFA, compatible PS4 v11.50-12 et PS5 toutes versions"
+                }
+            };
+            
+            // Afficher les produits
+            Object.keys(products).forEach(productId => {
+                const product = products[productId];
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.images[0]}" alt="${product.name}" onerror="this.src='placeholder.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">${product.price.toLocaleString()} FCFA</p>
+                        <a href="${productId}.html" class="btn">Voir détails</a>
+                    </div>
+                `;
+                allProductsGrid.appendChild(productCard);
+            });
+            
+            // Recherche de produits
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const productCards = document.querySelectorAll('.product-card');
+                
+                productCards.forEach(card => {
+                    const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                    if (productName.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
