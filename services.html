@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - CARDY STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="logo">
+                <img src="logo_cardystore.png" alt="CARDY STORE">
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+        
+        <!-- Menu déroulant -->
+        <nav class="dropdown-menu">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+            <a href="produits.html"><i class="fas fa-gamepad"></i> Produits</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- Contenu Services -->
+    <section class="services-page">
+        <div class="container">
+            <h1 class="section-title">Nos Services</h1>
+            
+            <div class="services-list">
+                <div class="service-card">
+                    <h3 class="service-title"><i class="fas fa-compact-disc"></i> Copie et installation de jeux</h3>
+                    <p class="service-price">À partir de 1.500 FCFA</p>
+                    <p class="service-description">Nous proposons la copie et l'installation des meilleurs jeps PlayStation. Compatible PS4 v9.00-11.00 et PS3. Large sélection de jeux disponibles.</p>
+                    <button class="btn demander-service" data-service="Copie et installation de jeux">Demander ce service</button>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title"><i class="fas fa-gamepad"></i> Vente de manettes</h3>
+                    <p class="service-price">À partir de 15.000 FCFA</p>
+                    <p class="service-description">Manettes DualSense PS5 à 45.000 FCFA. Nous avons toutes les manettes pour PS3, PS4 et PS5. Originales et de qualité garantie.</p>
+                    <button class="btn demander-service" data-service="Vente de manettes">Demander ce service</button>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title"><i class="fas fa-tools"></i> Réparation des consoles</h3>
+                    <p class="service-price">Devis gratuit</p>
+                    <p class="service-description">Réparation professionnelle des consoles PlayStation (PS3 à PS5). Diagnostic gratuit et pièces de rechange de qualité.</p>
+                    <button class="btn demander-service" data-service="Réparation des consoles">Demander ce service</button>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title"><i class="fas fa-wifi"></i> WiFi Zone et Salle de jeux</h3>
+                    <p class="service-price">Tarifs horaires</p>
+                    <p class="service-description">Espace dédié aux gamers avec connexion internet haut débit. Venez jouer en ligne avec vos amis dans notre salle climatisée.</p>
+                    <button class="btn demander-service" data-service="WiFi Zone et Salle de jeux">Demander ce service</button>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title"><i class="fas fa-headset"></i> Vente d'accessoires</h3>
+                    <p class="service-price">Prix variables</p>
+                    <p class="service-description">Casques, câbles, supports, chargeurs et tous les accessoires PlayStation. Large gamme de produits disponibles.</p>
+                    <button class="btn demander-service" data-service="Vente d'accessoires">Demander ce service</button>
+                </div>
+
+                <div class="service-card">
+                    <h3 class="service-title"><i class="fas fa-hands-helping"></i> Conseil et assistance</h3>
+                    <p class="service-price">Gratuit</p>
+                    <p class="service-description">Nos experts sont à votre disposition pour vous conseiller sur le matériel adapté à vos besoins et vous assister dans l'utilisation de vos consoles.</p>
+                    <button class="btn demander-service" data-service="Conseil et assistance">Demander ce service</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> +229 01 66 36 47 30</p>
+                    <p><i class="fas fa-envelope"></i> info@cardystore.com</p>
+                    <p><i class="fab fa-whatsapp"></i> +229 01 66 36 47 30</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Adresse</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Menontin, Église Catholique</p>
+                    <p>En face de l'immeuble blanc (au bord du pavé)</p>
+                    <p>Cotonou, Bénin</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Vendredi: 8h00 - 19h00</p>
+                    <p>Samedi: 9h00 - 18h00</p>
+                    <p>Dimanche: 10h00 - 15h00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 CARDY STORE. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Panier -->
+    <div class="cart-overlay"></div>
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h2>Votre Panier</h2>
+            <span class="close-cart"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="cart-items">
+            <!-- Les articles du panier seront ajoutés ici -->
+        </div>
+        <div class="cart-total">
+            Total: <span id="cart-total-amount">0</span> FCFA
+        </div>
+        <button class="btn" id="checkout-button">Payer via WhatsApp</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
