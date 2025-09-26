@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS5 Slim - CARDY STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="logo">
+                <img src="logo_cardystore.png" alt="CARDY STORE">
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+        
+        <!-- Menu déroulant -->
+        <nav class="dropdown-menu">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+            <a href="produits.html"><i class="fas fa-gamepad"></i> Produits</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- Page produit détaillée -->
+    <section class="product-detail-page">
+        <div class="container">
+            <a href="produits.html" class="back-button"><i class="fas fa-arrow-left"></i> Retour aux produits</a>
+            
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img src="ps5_slim.jpg" alt="PS5 Slim" id="main-image">
+                    </div>
+                    <div class="product-thumbnails">
+                        <div class="product-thumbnail active" data-image="ps5_slim.jpg">
+                            <img src="ps5_slim.jpg" alt="PS5 Slim vue 1">
+                        </div>
+                        <div class="product-thumbnail" data-image="ps5_slim_2.jpg">
+                            <img src="ps5_slim_2.jpg" alt="PS5 Slim vue 2" onerror="this.style.display='none'">
+                        </div>
+                        <div class="product-thumbnail" data-image="ps5_slim_3.jpg">
+                            <img src="ps5_slim_3.jpg" alt="PS5 Slim vue 3" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-info-detail">
+                    <h1>PS5 Slim</h1>
+                    <p class="product-price">390.000 FCFA</p>
+                    
+                    <div class="product-description">
+                        <p>PS5 Slim scellée : 480.000 FCFA avec jeux, 375.000 FCFA sans jeux. Neuf scellé avec garantie officielle.</p>
+                    </div>
+                    
+                    <div class="product-features">
+                        <h3>Caractéristiques principales :</h3>
+                        <ul>
+                            <li>Console PlayStation 5 Slim neuve et scellée</li>
+                            <li>Garantie officielle incluse</li>
+                            <li>+10 jeux au choix inclus dans le pack complet</li>
+                            <li>Manette DualSense innovante</li>
+                            <li>Compatibilité avec tous les jeux PS5</li>
+                            <li>Design élégant et compact</li>
+                            <li>Support 4K/120fps et Ray Tracing</li>
+                            <li>Stockage SSD ultra-rapide</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="product-options">
+                        <h3>Options disponibles :</h3>
+                        <div class="option">
+                            <input type="radio" id="option1" name="ps5-option" value="390000" checked>
+                            <label for="option1">PS5 Slim seule - 390.000 FCFA</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="option2" name="ps5-option" value="375000">
+                            <label for="option2">PS5 Slim sans jeux - 375.000 FCFA</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="option3" name="ps5-option" value="480000">
+                            <label for="option3">PS5 Slim + 10 jeux - 480.000 FCFA</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn add-to-cart-btn" style="padding: 15px 30px; font-size: 18px; margin-top: 20px;">
+                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                    </button>
+                    
+                    <a href="https://wa.me/2290166364730?text=Je suis intéressé par la PS5 Slim. Pouvez-vous me donner plus d'informations?" 
+                       class="btn" 
+                       style="background: #25D366; margin-left: 10px; padding: 15px 30px; font-size: 18px;" 
+                       target="_blank">
+                        <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> +229 01 66 36 47 30</p>
+                    <p><i class="fas fa-envelope"></i> info@cardystore.com</p>
+                    <p><i class="fab fa-whatsapp"></i> +229 01 66 36 47 30</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Adresse</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Menontin, Église Catholique</p>
+                    <p>En face de l'immeuble blanc (au bord du pavé)</p>
+                    <p>Cotonou, Bénin</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Vendredi: 8h00 - 19h00</p>
+                    <p>Samedi: 9h00 - 18h00</p>
+                    <p>Dimanche: 10h00 - 15h00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CARDY STORE. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Panier -->
+    <div class="cart-overlay"></div>
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h2>Votre Panier</h2>
+            <span class="close-cart"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="cart-items">
+            <!-- Les articles du panier seront ajoutés ici -->
+        </div>
+        <div class="cart-total">
+            Total: <span id="cart-total-amount">0</span> FCFA
+        </div>
+        <button class="btn" id="checkout-button">Payer via WhatsApp</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Gestion des images du produit
+        document.addEventListener('DOMContentLoaded', function() {
+            const thumbnails = document.querySelectorAll('.product-thumbnail');
+            const mainImage = document.getElementById('main-image');
+            
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    // Retirer la classe active de toutes les miniatures
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    // Ajouter la classe active à la miniature cliquée
+                    this.classList.add('active');
+                    // Changer l'image principale
+                    const newImage = this.getAttribute('data-image');
+                    mainImage.src = newImage;
+                });
+            });
+            
+            // Ajouter au panier
+            document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+                const selectedOption = document.querySelector('input[name="ps5-option"]:checked');
+                const price = parseInt(selectedOption.value);
+                const productName = selectedOption.nextElementSibling.textContent.trim();
+                
+                // Ajouter au panier (fonction du script principal)
+                addToCart('ps5', price, productName);
+            });
+        });
+        
+        // Fonction pour ajouter au panier (adaptée pour cette page)
+        function addToCart(productId, price, productName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === productId && item.price === price);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: price,
+                    images: ['ps5_slim.jpg'],
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+            alert('Produit ajouté au panier!');
+        }
+        
+        function updateCartDisplay() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = document.querySelector('.cart-count');
+            let totalItems = 0;
+            
+            cart.forEach(item => {
+                totalItems += item.quantity;
+            });
+            
+            cartCount.textContent = totalItems;
+        }
+    </script>
+</body>
+</html>
