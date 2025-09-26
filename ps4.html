@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS4 Fat - CARDY STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="logo">
+                <img src="logo_cardystore.png" alt="CARDY STORE">
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+        
+        <!-- Menu déroulant -->
+        <nav class="dropdown-menu">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+            <a href="produits.html"><i class="fas fa-gamepad"></i> Produits</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- Page produit détaillée -->
+    <section class="product-detail-page">
+        <div class="container">
+            <a href="produits.html" class="back-button"><i class="fas fa-arrow-left"></i> Retour aux produits</a>
+            
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img src="ps4_fat.jpg" alt="PS4 Fat" id="main-image">
+                    </div>
+                    <div class="product-thumbnails">
+                        <div class="product-thumbnail active" data-image="ps4_fat.jpg">
+                            <img src="ps4_fat.jpg" alt="PS4 Fat vue 1">
+                        </div>
+                        <div class="product-thumbnail" data-image="ps4_fat_2.jpg">
+                            <img src="ps4_fat_2.jpg" alt="PS4 Fat vue 2" onerror="this.style.display='none'">
+                        </div>
+                        <div class="product-thumbnail" data-image="ps4_fat_3.jpg">
+                            <img src="ps4_fat_3.jpg" alt="PS4 Fat vue 3" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-info-detail">
+                    <h1>PS4 Fat</h1>
+                    <p class="product-price">165.000 FCFA</p>
+                    
+                    <div class="product-description">
+                        <p>PS4 Fat reconditionnée en excellent état. Livrée avec +10-15 jeux, disque dur 500Go et tous les accessoires inclus.</p>
+                    </div>
+                    
+                    <div class="product-features">
+                        <h3>Caractéristiques principales :</h3>
+                        <ul>
+                            <li>Console PlayStation 4 Fat reconditionnée</li>
+                            <li>État comme neuf, testée et garantie</li>
+                            <li>Disque dur 500Go</li>
+                            <li>+10 à 15 jeux préinstallés</li>
+                            <li>Manette DualShock 4 incluse</li>
+                            <li>Câbles HDMI et alimentation fournis</li>
+                            <li>Garantie 3 mois</li>
+                            <li>Support 1080p haute définition</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="product-options">
+                        <h3>Jeux inclus (sélection) :</h3>
+                        <ul>
+                            <li>FIFA 23</li>
+                            <li>Call of Duty: Modern Warfare</li>
+                            <li>Grand Theft Auto V</li>
+                            <li>Spider-Man</li>
+                            <li>God of War</li>
+                            <li>Et 5-10 jeux supplémentaires au choix</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="btn add-to-cart-btn" style="padding: 15px 30px; font-size: 18px; margin-top: 20px;">
+                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                    </button>
+                    
+                    <a href="https://wa.me/2290166364730?text=Je suis intéressé par la PS4 Fat. Pouvez-vous me donner plus d'informations?" 
+                       class="btn" 
+                       style="background: #25D366; margin-left: 10px; padding: 15px 30px; font-size: 18px;" 
+                       target="_blank">
+                        <i class="fab fa-whatsapp"></i> Commander sur WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> +229 01 66 36 47 30</p>
+                    <p><i class="fas fa-envelope"></i> info@cardystore.com</p>
+                    <p><i class="fab fa-whatsapp"></i> +229 01 66 36 47 30</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Adresse</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Menontin, Église Catholique</p>
+                    <p>En face de l'immeuble blanc (au bord du pavé)</p>
+                    <p>Cotonou, Bénin</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Vendredi: 8h00 - 19h00</p>
+                    <p>Samedi: 9h00 - 18h00</p>
+                    <p>Dimanche: 10h00 - 15h00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CARDY STORE. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Même script que pour PS5.html adapté pour PS4
+        document.addEventListener('DOMContentLoaded', function() {
+            const thumbnails = document.querySelectorAll('.product-thumbnail');
+            const mainImage = document.getElementById('main-image');
+            
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    const newImage = this.getAttribute('data-image');
+                    mainImage.src = newImage;
+                });
+            });
+            
+            document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+                addToCart('ps4fat', 165000, 'PS4 Fat');
+            });
+        });
+        
+        function addToCart(productId, price, productName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: price,
+                    images: ['ps4_fat.jpg'],
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartDisplay();
+            alert('PS4 Fat ajoutée au panier!');
+        }
+        
+        function updateCartDisplay() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = document.querySelector('.cart-count');
+            let totalItems = 0;
+            
+            cart.forEach(item => {
+                totalItems += item.quantity;
+            });
+            
+            cartCount.textContent = totalItems;
+        }
+    </script>
+</body>
+</html>
