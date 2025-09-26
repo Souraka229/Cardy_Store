@@ -1,86 +1,197 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cardy-Store - Consoles PlayStation à Cotonou</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Cardy-Store : Consoles PlayStation à Cotonou, vente & services" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARDY STORE - Accueil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <div id="menu-hamburger" aria-label="Menu navigation" aria-expanded="false" role="button" tabindex="0">
-        <span></span><span></span><span></span>
-      </div>
-      <img src="images/logo.png" alt="Logo Cardy Store" class="logo" />
-      <nav id="nav-menu" class="nav-closed" aria-label="Menu principal">
-        <ul>
-          <li><a href="index.html" tabindex="0">Accueil</a></li>
-          <li><a href="produits.html" tabindex="0">Produits</a></li>
-          <li><a href="services.html" tabindex="0">Services</a></li>
-          <li><a href="contact.html" tabindex="0">Contact</a></li>
-        </ul>
-      </nav>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="logo">
+                <img src="logo_cardystore.png" alt="CARDY STORE">
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+        
+        <!-- Menu déroulant -->
+        <nav class="dropdown-menu">
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+            <a href="produits.html"><i class="fas fa-gamepad"></i> Produits</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <!-- Slider -->
+    <section class="slider">
+        <div class="slide active">
+            <img src="im1.jpg" alt="Promotion PlayStation">
+            <div class="slide-content">
+                <h2>PlayStation 5 Slim</h2>
+                <p>Nouvelle arrivée - Neuf scellé avec garantie</p>
+                <a href="PS5.html" class="btn">Voir le produit</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="im2.jpg" alt="Jeux PlayStation">
+            <div class="slide-content">
+                <h2>Packs de Jeux Exclusifs</h2>
+                <p>Compatible PS4 et PS5 - Meilleurs prix</p>
+                <a href="produits.html" class="btn">Découvrir</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="im3.jpg" alt="Services CARDY STORE">
+            <div class="slide-content">
+                <h2>Services Complets</h2>
+                <p>Réparation, installation jeux, vente accessoires</p>
+                <a href="services.html" class="btn">Nos services</a>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- Produits tendances -->
+    <section class="trending-products">
+        <div class="container">
+            <h2 class="section-title">Produits Tendances</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="ps5_slim.jpg" alt="PS5 Slim">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">PS5 Slim</h3>
+                        <p class="product-price">390.000 FCFA</p>
+                        <a href="PS5.html" class="btn">Voir détails</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="ps4_fat.jpg" alt="PS4 Fat">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">PS4 Fat</h3>
+                        <p class="product-price">165.000 FCFA</p>
+                        <a href="PS4.html" class="btn">Voir détails</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="ps3_slim_ultraslim.jpg" alt="PS3 Slim & Ultra Slim">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">PS3 Slim & Ultra Slim</h3>
+                        <p class="product-price">85.000 FCFA</p>
+                        <a href="PS3.html" class="btn">Voir détails</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="ps2_fat.jpg" alt="PS2 Fat">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">PS2 Fat</h3>
+                        <p class="product-price">35.000 FCFA</p>
+                        <a href="PS2.html" class="btn">Voir détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services prévisualisation -->
+    <section class="services-preview">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-preview">
+                    <i class="fas fa-compact-disc"></i>
+                    <h3>Installation Jeux</h3>
+                    <p>PS4 v9.00-11.00, PS3 dès 1.500 FCFA</p>
+                    <a href="services.html" class="btn-link">En savoir plus</a>
+                </div>
+                <div class="service-preview">
+                    <i class="fas fa-tools"></i>
+                    <h3>Réparation Consoles</h3>
+                    <p>PS3 à PS5 - Réparation rapide et fiable</p>
+                    <a href="services.html" class="btn-link">En savoir plus</a>
+                </div>
+                <div class="service-preview">
+                    <i class="fas fa-wifi"></i>
+                    <h3>WiFi Zone & Salle Jeux</h3>
+                    <p>Espace dédié aux gamers</p>
+                    <a href="services.html" class="btn-link">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> +229 01 66 36 47 30</p>
+                    <p><i class="fas fa-envelope"></i> info@cardystore.com</p>
+                    <p><i class="fab fa-whatsapp"></i> +229 01 66 36 47 30</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Adresse</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Menontin, Église Catholique</p>
+                    <p>En face de l'immeuble blanc (au bord du pavé)</p>
+                    <p>Cotonou, Bénin</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Lundi - Vendredi: 8h00 - 19h00</p>
+                    <p>Samedi: 9h00 - 18h00</p>
+                    <p>Dimanche: 10h00 - 15h00</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CARDY STORE. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Panier -->
+    <div class="cart-overlay"></div>
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h2>Votre Panier</h2>
+            <span class="close-cart"><i class="fas fa-times"></i></span>
+        </div>
+        <div class="cart-items">
+            <!-- Les articles du panier seront ajoutés ici -->
+        </div>
+        <div class="cart-total">
+            Total: <span id="cart-total-amount">0</span> FCFA
+        </div>
+        <button class="btn" id="checkout-button">Payer via WhatsApp</button>
     </div>
-  </header>
 
-  <main>
-    <section class="hero" aria-label="Bannière principale">
-      <div class="hero-slides">
-        <img src="images/slide1.jpg" alt="Jeux PlayStation" />
-        <img src="images/slide2.jpg" alt="Consoles PlayStation" />
-        <img src="images/slide3.jpg" alt="Accessoires PlayStation" />
-      </div>
-      <div class="hero-overlay">
-        <h1>Bienvenue chez Cardy-Store</h1>
-        <p>Découvrez les meilleures consoles PlayStation à Cotonou</p>
-        <a href="produits.html" class="btn-primary" aria-label="Découvrir nos produits">Découvrir nos produits</a>
-      </div>
-    </section>
-
-    <section class="produits-phares" aria-labelledby="produits-phares-title">
-      <h2 id="produits-phares-title">Produits phares</h2>
-      <div class="produits-grid" id="featured-products">
-        <!-- Produits ajoutés par script.js -->
-      </div>
-      <a href="produits.html" class="btn-secondary" aria-label="Voir tous les produits">Voir tous les produits</a>
-    </section>
-
-    <section class="services" aria-labelledby="services-title">
-      <h2 id="services-title">Nos services</h2>
-      <div class="services-grid">
-        <div class="service-card" tabindex="0" aria-label="Copie et installation des meilleurs jeux">
-          <span class="service-icon" aria-hidden="true">🕹️</span>
-          <h3>Installation Jeux</h3>
-          <p>Copie et installation des meilleurs jeux pour toutes consoles</p>
-        </div>
-        <div class="service-card" tabindex="0" aria-label="Vente de manettes PlayStation">
-          <span class="service-icon" aria-hidden="true">🎮</span>
-          <h3>Vente de Manettes</h3>
-          <p>Manettes officielles PS3 à PS5 disponibles</p>
-        </div>
-        <div class="service-card" tabindex="0" aria-label="Réparation de consoles PlayStation">
-          <span class="service-icon" aria-hidden="true">🔧</span>
-          <h3>Réparation</h3>
-          <p>Réparation professionnelle des consoles PS3 à PS5</p>
-        </div>
-        <div class="service-card" tabindex="0" aria-label="Espace WiFi et salle de jeux">
-          <span class="service-icon" aria-hidden="true">📡</span>
-          <h3>WiFi & Salle de Jeux</h3>
-          <p>Zone WiFi accessible et salle de jeux équipée</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-content">
-      <p>Cardy-Store &copy; 2025 | Menontin, Église Catholique, Cotonou | Téléphone: +229 01 66 36 47 30</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
