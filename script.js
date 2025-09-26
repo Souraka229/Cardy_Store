@@ -258,4 +258,134 @@ function updateCart() {
                 <div class="cart-item-name">${item.name}</div>
                 <div class="cart-item-price">${item.price.toLocaleString()} FCFA x ${item.quantity}</div>
             </div>
-            <div class="cart-item-
+            <div class="cart-item-remove" data-index="${index}"><i class="fas fa-trash"></i></div>
+        `;
+        cartItems.appendChild(cartItem);
+    });
+
+    cartTotalAmount.textContent = total.toLocaleString();
+    cartCount.textContent = itemCount;
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Supprimer un article du panier
+    const removeButtons = document.querySelectorAll('.cart-item-remove');
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            cart.splice(index, 1);
+            updateCart();
+        });
+    });
+}
+
+function addToCart(productId) {
+    const product = products[productId];
+    const existingItem = cart.find(item => item.id === productId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: productId,
+            name: product.name,
+            price: product.price,
+            images: product.images,
+            quantity: 1
+        });
+    }
+
+    updateCart();
+    alert('Produit ajouté au panier!');
+}
+
+function openCart() {
+    cartModal.classList.add('active');
+    cartOverlay.classList.add('active');
+}
+
+function closeCartModal() {
+    cartModal.classList.remove('active');
+    cartOverlay.classList.remove('active');
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert('Votre panier est vide!');
+        return;
+    }
+
+    let message = "Bonjour, je souhaite commander les produits suivants chez CARDY STORE:\n\n";
+    cart.forEach(item => {
+        message += `- ${item.name} (x${item.quantity}) : ${(item.price * item.quantity).toLocaleString()} FCFA\n`;
+    });
+    message += `\nTotal: ${cartTotalAmount.textContent} FCFA\n\n`;
+    message += "Merci de me contacter pour finaliser la commande.";
+    
+    const phoneNumber = "+2290166364730";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
+
+// Afficher tous les produits
+function displayAllProducts() {
+    const allProductsGrid = document.getElementById('all-products');
+    allProductsGrid.innerHTML = '';
+    
+    Object.keys(products).forEach(productId => {
+        const product = products[productId];
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.setAttribute('data-product', productId);
+        productCard.innerHTML = `
+            <div class="product-image">
+                <img src="${product.images[0]}" alt="${product.name}">
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${product.price.toLocaleString()} FCFA</p>
+                <a href="${productId}.html" class="btn">Voir détails</a>
+            </div>
+        `;
+        allProductsGrid.appendChild(productCard);
+    });
+}
+
+// Filtrer les produits
+function filterProducts() {
+    const searchTerm = this.value.toLowerCase();
+    const productCards = document.querySelectorAll('.product-card');
+    
+    productCards.forEach(card => {
+        const productName = card.querySelector('.product-name').textContent.toLowerCase();
+        if (productName.includes(searchTerm)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Demander un service
+function requestService(service) {
+    const message = `Bonjour, je suis intéressé(e) par le service: ${service}. Pouvez-vous me donner plus d'informations?`;
+    const phoneNumber = "+2290166364730";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+}
+
+// Formulaire de contact
+function submitContactForm(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    const fullMessage = `Nouveau message de contact CARDY STORE:\n\nNom: ${name}\nEmail: ${email}\nMessage: ${message}`;
+    const phoneNumber = "+2290166364730";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
+    
+    window.open(url, '_blank');
+    e.target.reset();
+    alert('Votre message a été envoyé!');
+}
