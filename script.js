@@ -1,242 +1,261 @@
-// Données produits (liste complète)
-const products = [
-  {
-    id: 'ps5-slim',
-    name: 'PS5 Slim Scellée',
-    price: 480000,
-    priceNoGames: 375000,
-    offer: '+10 jeux au choix',
-    description: 'Version la plus récente, design compact, performances optimisées',
-    state: 'Neuf scellé avec garantie',
-    images: ['images/ps5-slim.jpg'],
-    accessories: [],
-    category: 'console'
-  },
-  {
-    id: 'ps4-fat',
-    name: 'PS4 Fat',
-    price: 165000,
-    offer: '+10 à 15 jeux + 500Go',
-    description: 'Version originale, robuste, performances fiables',
-    state: 'Reconditionné avec garantie',
-    images: ['images/ps4-fat.jpg'],
-    accessories: ['manette', 'câbles', 'support'],
-    category: 'console'
-  },
-  {
-    id: 'ps3-slim',
-    name: 'PS3 Slim',
-    price: 85000,
-    offer: '256Go + 25 jeux',
-    description: 'Design élégant et compact, large bibliothèque de jeux classiques',
-    state: 'Reconditionné avec garantie',
-    images: ['images/ps3-slim.jpg'],
-    accessories: ['manette', 'câbles'],
-    category: 'console'
-  },
-  {
-    id: 'ps4-slim',
-    name: 'PS4 Slim',
-    price: 200000,
-    offer: '500Go + 10 à 15 jeux',
-    description: 'Design 30% plus mince, consommation réduite, silencieuse',
-    state: 'Reconditionné avec garantie',
-    images: ['images/ps4-slim.jpg'],
-    accessories: ['manette', 'câbles', 'support'],
-    category: 'console'
-  },
-  {
-    id: 'ps4-pro',
-    name: 'PS4 Pro',
-    price: 275000,
-    offer: '1To + 20 jeux',
-    description: 'Performances 4K, graphismes améliorés, version haute performance',
-    state: 'Reconditionné avec garantie',
-    images: ['images/ps4-pro.jpg'],
-    accessories: ['manette', 'câbles', 'support'],
-    category: 'console'
-  },
-  {
-    id: 'ps2-fat',
-    name: 'PS2 Fat',
-    price: 35000,
-    offer: '34 jeux + clé 32Go',
-    description: 'Console légendaire, immense bibliothèque de jeux classiques',
-    state: 'Reconditionné avec garantie',
-    images: ['images/ps2-fat.jpg'],
-    accessories: ['manette', 'câbles'],
-    category: 'console'
-  }
-];
-
-// Gestion menu hamburger
-const menuHamburger = document.getElementById('menu-hamburger');
-const navMenu = document.getElementById('nav-menu');
-if(menuHamburger){
-  menuHamburger.addEventListener('click', () => {
-    const expanded = menuHamburger.getAttribute('aria-expanded') === 'true';
-    menuHamburger.setAttribute('aria-expanded', String(!expanded));
-    navMenu.classList.toggle('nav-open');
-    navMenu.classList.toggle('nav-closed');
-  });
-
-  menuHamburger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      menuHamburger.click();
+// Données des produits
+const products = {
+    ps5: {
+        name: "PS5 Slim",
+        price: 390000,
+        images: ["ps5_slim.jpg", "ps5_slim_2.jpg", "ps5_slim_3.jpg"],
+        description: "PS5 Slim scellée : 480.000 FCFA, 375.000 sans jeux, +10 jeux au choix, neuf scellé avec garantie",
+        features: [
+            "Console PlayStation 5 Slim neuve et scellée",
+            "Garantie offerte",
+            "+10 jeux au choix inclus",
+            "Manette DualSense incluse",
+            "Compatibilité avec tous les jeux PS5"
+        ]
+    },
+    ps4: {
+        name: "PS4 Fat",
+        price: 165000,
+        images: ["ps4_fat.jpg", "ps4_fat_2.jpg", "ps4_fat_3.jpg"],
+        description: "PS4 Fat : 165.000 FCFA, +10-15 jeux +500Go, accessoires inclus, reconditionné",
+        features: [
+            "Console PlayStation 4 Fat reconditionnée",
+            "Disque dur 500Go",
+            "+10 à 15 jeux inclus",
+            "Manette DualShock 4 incluse",
+            "Tous les accessoires fournis"
+        ]
+    },
+    ps3: {
+        name: "PS3 Slim & Ultra Slim",
+        price: 85000,
+        images: ["ps3_slim_ultraslim.jpg", "ps3_slim_ultraslim_2.jpg", "ps3_slim_ultraslim_3.jpg"],
+        description: "PS3 Slim & Ultra Slim : 85.000 FCFA, 256Go +25 jeux, accessoires inclus, reconditionné",
+        features: [
+            "Console PlayStation 3 Slim ou Ultra Slim reconditionnée",
+            "Disque dur 256Go",
+            "+25 jeux inclus",
+            "Manette Sixaxis ou DualShock 3 incluse",
+            "État comme neuf"
+        ]
+    },
+    ps2: {
+        name: "PS2 Fat",
+        price: 35000,
+        images: ["ps2_fat.jpg", "ps2_fat_2.jpg", "ps2_fat_3.jpg"],
+        description: "PS2 Fat : 35.000 FCFA, 34 jeux + clé 32Go, accessoires inclus, reconditionné",
+        features: [
+            "Console PlayStation 2 Fat reconditionnée",
+            "34 jeux préinstallés",
+            "Clé USB 32Go incluse",
+            "Manettes originales incluses",
+            "Câbles AV fournis"
+        ]
+    },
+    ps4slim: {
+        name: "PS4 Slim",
+        price: 200000,
+        images: ["ps4_slim.jpg", "ps4_slim_2.jpg", "ps4_slim_3.jpg"],
+        description: "PS4 Slim : 200.000 FCFA, 500Go +10-15 jeux, accessoires inclus, reconditionné",
+        features: [
+            "Console PlayStation 4 Slim reconditionnée",
+            "Disque dur 500Go",
+            "+10 à 15 jeux inclus",
+            "Design élégant et compact",
+            "Manette DualShock 4 incluse"
+        ]
+    },
+    ps4pro: {
+        name: "PS4 Pro",
+        price: 275000,
+        images: ["ps4_pro.jpg", "ps4_pro_2.jpg", "ps4_pro_3.jpg"],
+        description: "PS4 Pro : 275.000 FCFA, 1To +20 jeux, accessoires inclus, reconditionné",
+        features: [
+            "Console PlayStation 4 Pro reconditionnée",
+            "Disque dur 1To",
+            "+20 jeux inclus",
+            "Support 4K et HDR",
+            "Manette DualShock 4 incluse"
+        ]
+    },
+    pack3: {
+        name: "Pack 3 Jeux",
+        price: 38000,
+        images: ["pack_jeux.jpg", "pack_jeux_2.jpg", "pack_jeux_3.jpg"],
+        description: "Pack 3 Jeux : 38.000 FCFA, compatible PS4 v11.50-12 et PS5 toutes versions",
+        features: [
+            "3 jeux au choix",
+            "Compatible PS4 v11.50-12",
+            "Compatible PS5 toutes versions",
+            "Installation incluse",
+            "Garantie de fonctionnement"
+        ]
+    },
+    pack6: {
+        name: "Pack 6 Jeux",
+        price: 65000,
+        images: ["pack_jeux.jpg", "pack_jeux_2.jpg", "pack_jeux_3.jpg"],
+        description: "Pack 6 Jeux : 65.000 FCFA, compatible PS4 v11.50-12 et PS5 toutes versions",
+        features: [
+            "6 jeux au choix",
+            "Compatible PS4 v11.50-12",
+            "Compatible PS5 toutes versions",
+            "Installation incluse",
+            "Garantie de fonctionnement"
+        ]
+    },
+    pack10: {
+        name: "Pack 10 Jeux",
+        price: 85000,
+        images: ["pack_jeux.jpg", "pack_jeux_2.jpg", "pack_jeux_3.jpg"],
+        description: "Pack 10 Jeux : 85.000 FCFA, compatible PS4 v11.50-12 et PS5 toutes versions",
+        features: [
+            "10 jeux au choix",
+            "Compatible PS4 v11.50-12",
+            "Compatible PS5 toutes versions",
+            "Installation incluse",
+            "Garantie de fonctionnement"
+        ]
     }
-  });
-}
+};
 
-// Fonction affichage produits phares (accueil)
-function displayFeatured() {
-  const featuredContainer = document.getElementById('featured-products');
-  if (!featuredContainer) return;
-  const featured = products.slice(0, 4); // 4 produits max
-  featuredContainer.innerHTML = '';
-  featured.forEach(p => {
-    const card = document.createElement('article');
-    card.className = 'produit-card';
-    card.tabIndex = 0;
-    card.innerHTML = `
-      <img src="${p.images[0]}" alt="Console ${p.name}" loading="lazy" />
-      <div class="produit-info">
-        <h3>${p.name}</h3>
-        <p class="prix">${p.price.toLocaleString('fr-FR')} FCFA</p>
-      </div>`;
-    card.addEventListener('click', () => {
-      window.location.href = `produit-details.html?id=${p.id}`;
-    });
-    featuredContainer.appendChild(card);
-  });
-}
+// Panier
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Fonction affichage catalogue complet
-function displayAllProducts() {
-  const allContainer = document.getElementById('all-products');
-  if (!allContainer) return;
-  allContainer.innerHTML = '';
-  products.forEach(p => {
-    const card = document.createElement('article');
-    card.className = 'produit-card';
-    card.tabIndex = 0;
-    card.innerHTML = `
-      <img src="${p.images[0]}" alt="Console ${p.name}" loading="lazy" />
-      <div class="produit-info">
-        <h3>${p.name}</h3>
-        <p class="prix">${p.price.toLocaleString('fr-FR')} FCFA</p>
-      </div>`;
-    card.addEventListener('click', () => {
-      window.location.href = `produit-details.html?id=${p.id}`;
-    });
-    allContainer.appendChild(card);
-  });
-}
-
-// Fonction affichage détails produit
-function displayProductDetails() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
-  if (!id) return;
-
-  const produit = products.find(p => p.id === id);
-  if (!produit) return;
-
-  // Gallery images
-  const mainImage = document.getElementById('main-image');
-  const thumbnails = document.getElementById('thumbnails');
-  mainImage.src = produit.images[0];
-  mainImage.alt = `Image principale de ${produit.name}`;
-
-  thumbnails.innerHTML = '';
-  produit.images.forEach((img, i) => {
-    const thumb = document.createElement('img');
-    thumb.src = img;
-    thumb.alt = `Miniature ${i + 1} de ${produit.name}`;
-    thumb.loading = 'lazy';
-    thumb.tabIndex = 0;
-    thumb.addEventListener('click', () => {
-      mainImage.src = img;
-    });
-    thumbnails.appendChild(thumb);
-  });
-
-  // Infos produit
-  const info = document.getElementById('product-info');
-  info.innerHTML = `
-    <h1>${produit.name}</h1>
-    <p class="prix">${produit.price.toLocaleString('fr-FR')} FCFA</p>
-    <p><strong>État :</strong> ${produit.state}</p>
-    <p><strong>Offre :</strong> ${produit.offer ?? ''}</p>
-    <p><strong>Description :</strong> ${produit.description}</p>
-    <p><strong>Caractéristiques :</strong> ${produit.accessories.length > 0 ? produit.accessories.join(', ') : 'Aucun accessoire'}</p>
-    <button id="addToCartBtn" class="btn-primary" aria-label="Ajouter au panier">Ajouter au panier</button>
-    <button id="orderWhatsappBtn" class="btn-secondary" aria-label="Commander via WhatsApp">Commander via WhatsApp</button>
-  `;
-
-  // Gestion boutons panier et WhatsApp
-  document.getElementById('addToCartBtn').onclick = () => {
-    addToCart(produit);
-    alert('Produit ajouté au panier');
-  };
-  document.getElementById('orderWhatsappBtn').onclick = () => {
-    const msg = generateWhatsappOrderMessage([{ product: produit, quantity: 1 }]);
-    const phone = "+2290166364730";
-    const url = `https://wa.me/${phone.replace(/D/g, '')}?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
-  };
-
-  // Afficher produits similaires (mêmes catégorie)
-  const similar = products.filter(p => p.category === produit.category && p.id !== produit.id).slice(0, 4);
-  const simContainer = document.getElementById('similar-products');
-  if (!simContainer) return;
-  simContainer.innerHTML = '';
-  similar.forEach(p => {
-    const card = document.createElement('article');
-    card.className = 'produit-card';
-    card.tabIndex = 0;
-    card.innerHTML = `
-      <img src="${p.images[0]}" alt="Console ${p.name}" loading="lazy" />
-      <div class="produit-info">
-        <h3>${p.name}</h3>
-        <p class="prix">${p.price.toLocaleString('fr-FR')} FCFA</p>
-      </div>`;
-    card.addEventListener('click', () => {
-      window.location.href = `produit-details.html?id=${p.id}`;
-    });
-    simContainer.appendChild(card);
-  });
-}
-
-// Ajouter produit au panier (localStorage)
-function addToCart(product) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const index = cart.findIndex(i => i.product.id === product.id);
-  if (index !== -1) {
-    cart[index].quantity++;
-  } else {
-    cart.push({ product: product, quantity: 1 });
-  }
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-// Générer message WhatsApp commande
-function generateWhatsappOrderMessage(cartItems) {
-  let msg = "Commande CARDY-STORE :%0A";
-  let total = 0;
-  cartItems.forEach(({ product, quantity }) => {
-    const line = `${product.name} x${quantity} = ${(product.price * quantity).toLocaleString('fr-FR')} FCFA`;
-    msg += line + "%0A";
-    total += product.price * quantity;
-  });
-  msg += `Total : ${total.toLocaleString('fr-FR')} FCFA%0A`;
-  msg += "Merci de votre commande !";
-  return msg;
-}
+// Éléments DOM
+const menuIcon = document.querySelector('.menu-icon');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+const cartIcon = document.querySelector('.cart-icon');
+const cartModal = document.querySelector('.cart-modal');
+const cartOverlay = document.querySelector('.cart-overlay');
+const closeCart = document.querySelector('.close-cart');
+const cartItems = document.querySelector('.cart-items');
+const cartTotalAmount = document.getElementById('cart-total-amount');
+const checkoutButton = document.getElementById('checkout-button');
+const cartCount = document.querySelector('.cart-count');
 
 // Initialisation
-document.addEventListener('DOMContentLoaded', () => {
-  if(document.getElementById('featured-products')) displayFeatured();
-  if(document.getElementById('all-products')) displayAllProducts();
-  if(document.getElementById('product-info')) displayProductDetails();
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu déroulant
+    menuIcon.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('active');
+    });
+
+    // Fermer le menu déroulant en cliquant ailleurs
+    document.addEventListener('click', function(e) {
+        if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('active');
+        }
+    });
+
+    // Slider
+    initSlider();
+
+    // Panier
+    updateCart();
+
+    // Ouvrir/fermer le panier
+    cartIcon.addEventListener('click', openCart);
+    closeCart.addEventListener('click', closeCartModal);
+    cartOverlay.addEventListener('click', closeCartModal);
+
+    // Paiement via WhatsApp
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', checkout);
+    }
+
+    // Navigation vers les pages produits depuis l'accueil
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product');
+            if (productId) {
+                window.location.href = productId + '.html';
+            }
+        });
+    });
+
+    // Recherche de produits
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', filterProducts);
+    }
+
+    // Formulaire de contact
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', submitContactForm);
+    }
+
+    // Demander un service
+    const serviceButtons = document.querySelectorAll('.demander-service');
+    serviceButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const service = this.getAttribute('data-service');
+            requestService(service);
+        });
+    });
+
+    // Afficher tous les produits sur la page produits
+    if (document.getElementById('all-products')) {
+        displayAllProducts();
+    }
+
+    // Gérer les pages produits détaillées
+    if (document.getElementById('product-detail-content')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('product');
+        if (productId && products[productId]) {
+            showProductDetail(productId);
+        }
+    }
 });
+
+// Slider
+function initSlider() {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        currentSlide = (n + slides.length) % slides.length;
+        
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    // Navigation par points
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    // Défilement automatique
+    setInterval(() => {
+        showSlide(currentSlide + 1);
+    }, 5000);
+}
+
+// Panier
+function updateCart() {
+    cartItems.innerHTML = '';
+    let total = 0;
+    let itemCount = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        itemCount += item.quantity;
+        
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+            <div class="cart-item-image">
+                <img src="${item.images[0]}" alt="${item.name}">
+            </div>
+            <div class="cart-item-details">
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-price">${item.price.toLocaleString()} FCFA x ${item.quantity}</div>
+            </div>
+            <div class="cart-item-
